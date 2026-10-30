@@ -382,6 +382,25 @@ For context: established dealer-website vendors typically charge franchise deale
 - Preview deployments per branch on Vercel; one production deploy updates every dealer at once.
 - Feature flags for staged rollouts.
 
+### 5.8 The answer engine ("Ask"): fast, accurate answers that convert
+
+Idea (Wes): customers ask a service, parts, or sales question and get the right answer immediately, with minimal chat, then one clear next step: book, or have a person call. It is an answer engine, not a salesperson, and it never replaces staff.
+
+**How it works**
+1. A language layer reads the question and extracts what was asked: service or part, vehicle, year, engine hints.
+2. A deterministic engine looks up the answer in the dealer's own tables (service menu, quarts and oil spec by engine, parts catalog with fitment, later inventory). Numbers come only from those tables; the language layer never invents a price.
+3. If details are missing, show every variant with its price (for example one row per engine) and a plain way to tell which applies.
+4. Next step is always one tap: book (no login), or "have an advisor call me". Anything it cannot verify goes to a named person.
+5. After a booking, offer once, optionally, to remember the customer's details and vehicle on that device.
+
+**Guardrails:** prices shown are firm quotes or carry a not-to-exceed cap the dealer approves; wording and tables are dealer-approved; it says it is an assistant; every question and outcome is logged for the dealer; consent is captured for any follow-up; handoff to a human is always available.
+
+**Why a dealer buys it:** service customers who would have bounced now book; leads arrive with the vehicle and intent attached; advisors stop answering repeat price calls; the dashboard shows what customers ask and cannot find. **Why customers and staff win:** a straight answer in seconds at any hour, and staff spend time on people who are ready to buy.
+
+**Sales model:** priced as an add-on (about $199 to $499 per month in section 4), with booked appointments and leads attributed in the dashboard.
+
+**Demo status:** the demo Ask box uses a rule-based reader over fictional price tables, so it works with no AI service or key. The language layer is a drop-in replacement for the reader; the engine, tables, guardrails and booking flow stay the same. New and used inventory questions are the next phase.
+
 ---
 
 ## 6. Design direction for the build (applies to UI phases)

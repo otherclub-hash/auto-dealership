@@ -118,7 +118,7 @@ Formula: labor + (quarts x price per quart) + filter + shop and disposal fee.
 | 2.7L turbo I4 | 0W-20 | 6.0 | $39.00 | $57.00 | $14.00 | $3.50 | **$113.50** |
 | 3.6L V6 | 0W-20 | 6.5 | $39.00 | $61.75 | $14.00 | $3.50 | **$118.25** |
 | 5.3L V8 | 0W-20 | 8.0 | $39.00 | $76.00 | $16.00 | $3.50 | **$134.50** |
-| 3.3L diesel | 5W-40 | 7.5 | $49.00 | $93.75 | $29.00 | $3.50 | **$175.25** |
+| 3.3L diesel | 5W-40 | 7.5 | $49.00 | $71.25 | $29.00 | $3.50 | **$152.75** |
 
 Policy line: "Your price is $134.50. You will never pay more than $138.75 without us texting you first." All numbers fictional.
 

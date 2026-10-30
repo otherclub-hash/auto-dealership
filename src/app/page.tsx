@@ -1,3 +1,4 @@
+import AskBox from "@/components/AskBox";
 import DoorCard from "@/components/DoorCard";
 import Icon from "@/components/Icons";
 import Particles from "@/components/Particles";
@@ -11,6 +12,7 @@ const DOOR_ICONS = ["shop", "sell", "service", "parts", "visit"] as const;
 
 const NAV = [
   { id: "home", label: "Lakeshore" },
+  { id: "ask", label: "Ask us" },
   { id: "westwind", label: "Westwind" },
   { id: "woodsaaron", label: "Woods-Aaron" },
   { id: "ia", label: "Interbachen-Antverp" },
@@ -85,11 +87,22 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <a className="down" href="#westwind">
+        <a className="down" href="#ask">
           <span className="sr">Scroll to our brands</span>
           <span aria-hidden="true">↓</span>
         </a>
       </Stage>
+
+      {/* ASK: straight answers from the dealer's own price list. */}
+      <section id="ask" className="ask" aria-label="Ask us about service or parts">
+        <div className="ask-head">
+          <p className="eyebrow">Straight answers</p>
+          <h2>Ask about service or parts.</h2>
+          <p className="lede">Your price, from our own price list, in seconds. Then book it, or have a person call you.</p>
+        </div>
+        <AskBox />
+        <p className="ask-note">Answers come from our posted prices. A person confirms every appointment.</p>
+      </section>
 
       {/* WESTWIND: the horizon. One idea: the sun rises and the car drives as you scroll. */}
       <Stage id="westwind" scene="westwind" label={ww.brand}>

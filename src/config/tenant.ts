@@ -33,8 +33,8 @@ export const tenant: Tenant = {
   intents: [
     { label: "Shop", hint: "New and pre-owned", href: "#brands" },
     { label: "Sell or trade", hint: "A real offer, fast", href: "#brands" },
-    { label: "Service", hint: "A firm price, then book", href: "#brands" },
-    { label: "Parts", hint: "Fitted to your vehicle", href: "#brands" },
+    { label: "Service", hint: "A firm price, then book", href: "#ask" },
+    { label: "Parts", hint: "Fitted to your vehicle", href: "#ask" },
     { label: "Visit", hint: "Hours and directions", href: "#locations" },
   ],
   scenes: [

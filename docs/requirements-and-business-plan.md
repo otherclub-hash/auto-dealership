@@ -181,7 +181,7 @@ Ordering rule (from section 0): **dealer dollar impact first, demo proof second,
 ### Phase 0: Foundation (build before any feature)
 - Multi-tenant, config-driven template (section 5): brand tokens, content, departments toggle on/off.
 - Design system: cinematic dark staging, high-contrast text, large targets, keyboard, swipe, phone-first.
-- Seeded demo data for a fictional dealership group "Northstar Auto" (not a real brand), with 150 to 300 realistic vehicles, real-looking photos (licensed or generated), service menu, parts catalog sample, specials.
+- Seeded demo data for a fictional dealership group "Lakeshore Auto Family" (not a real brand), with 150 to 300 realistic vehicles, real-looking photos (licensed or generated), service menu, parts catalog sample, specials.
 - Legal pages, footer, accessibility baseline, analytics events.
 
 ### Phase 1: Demo MVP (the "wow plus proof" release)

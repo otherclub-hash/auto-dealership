@@ -25,20 +25,20 @@ Still to confirm with Wes: the four brand names below (proposed), the five locat
 
 | # | Location | Brand / purpose | Notes |
 |---|---|---|---|
-| 1 | Lakeshore Northwind of Birchwood Bay | Mainstream new and used, full service and parts | Flagship, largest fixed ops |
-| 2 | Lakeshore Ironwood of Cedar Point | Trucks and SUVs, new and used, service and parts | Trailering, fleet and work-truck customers |
-| 3 | Lakeshore Valerian of Pinecrest | Luxury, new and certified, concierge service | Higher expectations, pickup and delivery |
-| 4 | Lakeshore Lumen Studio of Harbor Mills | EV-only brand, low-pressure studio, appointment service | Charging, EV incentives, different service needs |
+| 1 | Lakeshore WestWind of Birchwood Bay | Mainstream new and used, full service and parts | Flagship, largest fixed ops |
+| 2 | Lakeshore WoodsAaron of Cedar Point | Trucks and SUVs, new and used, service and parts | Trailering, fleet and work-truck customers |
+| 3 | Lakeshore Interbachen-Antverp of Pinecrest | Luxury, new and certified, concierge service | Higher expectations, pickup and delivery |
+| 4 | Lakeshore Radium Studio of Harbor Mills | EV-only brand, low-pressure studio, appointment service | Charging, EV incentives, different service needs |
 | 5 | Lakeshore Pre-Owned and Certified, Route 9 Commons | Multi-brand used, no new cars | Shared used inventory, trade-in intake |
 
 ### 1.2 The four fictional brands (proposed)
 
 | Brand | Segment | Models (all fictional) | Why it is in the demo |
 |---|---|---|---|
-| Northwind | Mainstream | Aurelia sedan, Tamarack compact crossover, Boundary 3-row SUV, Voyageur minivan | Volume, family shoppers, incentives |
-| Ironwood | Truck and SUV | Ridgeback pickup (2.7L turbo I4, 3.6L V6, 5.3L V8, 3.3L diesel), Summit SUV | **Oil-change flagship**: engine sets oil quantity |
-| Valerian | Luxury | V4 sedan, V6 SUV, V8 coupe | Premium service, CPO, concierge |
-| Lumen | Electric only | Lumen One crossover, Lumen Two sedan | EV incentives, charging accessories, service without oil changes |
+| WestWind | Mainstream | Aurelia sedan, Tamarack compact crossover, Boundary 3-row SUV, Voyageur minivan | Volume, family shoppers, incentives |
+| WoodsAaron Motor Co | Truck and SUV | Ridgeback pickup (2.7L turbo I4, 3.6L V6, 5.3L V8, 3.3L diesel), Summit SUV | **Oil-change flagship**: engine sets oil quantity |
+| Interbachen-Antverp (IA) | Luxury | V4 sedan, V6 SUV, V8 coupe | Premium service, CPO, concierge |
+| Radium | Electric only | Radium One crossover, Radium Two sedan | EV incentives, charging accessories, service without oil changes |
 
 Manufacturer realities to mimic: incentives by ZIP and model year, certified pre-owned programs, factory accessory catalogs, scheduled-maintenance guides, recall and campaign feeds, brand image standards.
 
@@ -56,7 +56,7 @@ Manufacturer realities to mimic: incentives by ZIP and model year, certified pre
 | Service | 4 service departments, about 200 repair orders (ROs) per day group-wide |
 | Average customer-pay RO | About $380 |
 | Parts | Retail counters, wholesale to local shops and body shops, accessories |
-| Hours | Sales Mon to Sat; service Mon to Fri 7 to 6, Sat 8 to 3; Lumen Studio by appointment |
+| Hours | Sales Mon to Sat; service Mon to Fri 7 to 6, Sat 8 to 3; Radium Studio by appointment |
 
 ### 2.1 Where the money comes from (illustrative monthly gross profit, group)
 
@@ -97,7 +97,7 @@ What this group lives with:
 - Callers who get a range or "it depends" often do not book (Wes's own experience).
 - Declined brakes, tires, and filters are rarely followed up.
 - Retention falls after the warranty period; owners drift to independent shops.
-- Valerian and Lumen owners expect convenience (pickup, text updates); Northwind and Ironwood owners expect fair, clear prices.
+- Interbachen-Antverp and Radium owners expect convenience (pickup, text updates); WestWind and WoodsAaron owners expect fair, clear prices.
 
 What we build for it:
 - Vehicle-based **service price estimator** with firm quotes and a not-to-exceed policy.
@@ -105,7 +105,7 @@ What we build for it:
 - Text-to-approve estimates with photos and video.
 - Reminders by mileage and date, declined-work follow-up, loyalty rewards.
 
-### 3.1 Firm-price example: oil change on the Ironwood Ridgeback
+### 3.1 Firm-price example: oil change on the WoodsAaron Ridgeback
 
 Formula: labor + (quarts x price per quart) + filter + shop and disposal fee.
 
@@ -118,7 +118,7 @@ Formula: labor + (quarts x price per quart) + filter + shop and disposal fee.
 
 Policy line: "Your price is $134.50. You will never pay more than $138.75 without us texting you first." All numbers fictional.
 
-Lumen (EV) service menu has no oil change; it shows tire rotation, cabin filter, brake fluid, battery health check, and software updates, to prove the menu is data-driven.
+Radium (EV) service menu has no oil change; it shows tire rotation, cabin filter, brake fluid, battery health check, and software updates, to prove the menu is data-driven.
 
 ---
 
@@ -168,12 +168,12 @@ What we build for it: instant auto-reply and text, round-robin routing across st
 
 ## 7. Day in the life: scenarios to script in the demo
 
-1. **Sunday 9 p.m.:** a shopper searches for a 3-row Northwind Boundary under $55,000. An instant text confirms; Monday 8 a.m. the BDC sees what they viewed.
-2. **Service price:** an Ironwood Ridgeback owner picks the V8 and sees $134.50, books Saturday, gets a reminder. The service director sees a filled bay.
+1. **Sunday 9 p.m.:** a shopper searches for a 3-row WestWind Boundary under $55,000. An instant text confirms; Monday 8 a.m. the BDC sees what they viewed.
+2. **Service price:** an WoodsAaron Ridgeback owner picks the V8 and sees $134.50, books Saturday, gets a reminder. The service director sees a filled bay.
 3. **Declined brakes:** an owner who declined brakes last month gets a text with a price and a booking link.
 4. **Trade-in:** a Tamarack owner enters a plate, answers five condition cards, and books an inspection at the pre-owned lot.
-5. **Luxury concierge:** a Valerian owner books pickup and delivery.
-6. **EV:** a Lumen shopper compares incentives and home-charger accessories.
+5. **Luxury concierge:** a Interbachen-Antverp owner books pickup and delivery.
+6. **EV:** a Radium shopper compares incentives and home-charger accessories.
 7. **Parts:** a local shop logs in, finds fitment by VIN, and reorders a brake kit.
 8. **Manager view:** Monday dashboard by store and for the group: leads, response time, appointments, shows, service bookings, aged inventory, revenue attributed to the site.
 9. **A new dealer in a day:** the same app loads as a different fictional dealer with new colors and inventory, to prove the template.

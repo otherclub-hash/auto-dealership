@@ -72,12 +72,12 @@ a { color: inherit; }
 
 /* ---------- Vehicles ---------- */
 .rig {
-  position: absolute !important; left: 50%; bottom: 7svh; width: min(88vw, 820px); aspect-ratio: 600 / 210;
+  position: absolute !important; left: 50%; bottom: 7svh; width: min(88vw, 820px);
   transform: translateX(-50%); z-index: 3;
 }
-.rig svg { display: block; width: 100%; height: 100%; }
-.wheel { transform-box: fill-box; transform-origin: center; transform: rotate(calc(var(--p, 0.5) * 1440deg)); }
-.idle svg { animation: bob 2.4s ease-in-out infinite; }
+.rig::before { content: ""; position: absolute; left: 4%; right: 4%; bottom: -2%; height: 8%; border-radius: 50%; background: #000000; filter: blur(10px); opacity: .6; z-index: -1; }
+.rig img { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+.idle img { animation: bob 2.4s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translateY(-3px); } }
 
 /* ---------- Group: lakeside dusk ---------- */
@@ -170,7 +170,7 @@ a { color: inherit; }
 .scene-ia .beam { position: absolute; inset: 0; z-index: 0; background: radial-gradient(circle 340px at calc(var(--mx, .5) * 100%) calc(var(--my, .5) * 100%), #2a2f3d 0%, #07090f 100%); }
 .rig.floor { bottom: 9svh; -webkit-box-reflect: below -6px linear-gradient(#0000 50%, #00000066 100%); }
 .scene-ia .rig .ghost, .scene-ia .rig .revealed { position: absolute; inset: 0; }
-.scene-ia .rig .ghost { filter: brightness(.45) saturate(.7); }
+.scene-ia .rig .ghost { filter: brightness(.38) saturate(.7); }
 .scene-ia .rig .revealed {
   -webkit-mask-image: radial-gradient(circle 240px at calc(var(--rx, 50) * 1%) calc(var(--ry, 50) * 1%), #000 0%, #0000 100%);
   mask-image: radial-gradient(circle 240px at calc(var(--rx, 50) * 1%) calc(var(--ry, 50) * 1%), #000 0%, #0000 100%);
@@ -195,8 +195,8 @@ a { color: inherit; }
 .pct strong { font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 2.8rem); line-height: 1; }
 .pct span { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .75rem; }
 .scene-radium .rig { bottom: 6svh; }
-.scene-radium .rig svg { animation: hum 4s ease-in-out infinite; }
-@keyframes hum { 50% { filter: drop-shadow(0 0 14px #47e6ff); } }
+.scene-radium .rig img { animation: hum 4s ease-in-out infinite; }
+@keyframes hum { 50% { filter: drop-shadow(0 0 16px #47e6ff); } }
 
 /* ---------- Scene rail: a road with a little car ---------- */
 .rail { position: fixed; right: 8px; top: 50%; transform: translateY(-50%); z-index: 30; display: grid; justify-items: center; }
@@ -232,7 +232,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .down, .idle svg, .cloud, .blades, .sailboat, .stars circle, .shimmer span, .gridfloor::before, .scene-radium .rig svg, .beams::after { animation: none; }
+  .down, .idle img, .cloud, .blades, .sailboat, .stars circle, .shimmer span, .gridfloor::before, .scene-radium .rig img, .beams::after { animation: none; }
   .btn, .door, .door-icon, .locations li { transition: none; }
 }
 @media (max-width: 640px) {

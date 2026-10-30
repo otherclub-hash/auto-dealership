@@ -4,7 +4,7 @@ import Particles from "@/components/Particles";
 import SceneNav from "@/components/SceneNav";
 import { Clouds, Mountains, Sailboat, Shimmer, Shoreline, Stars, Windmill } from "@/components/Scenery";
 import Stage from "@/components/Stage";
-import Vehicle from "@/components/Vehicles";
+import Vehicle, { vehicleRatio } from "@/components/Vehicles";
 import { tenant, type Scene } from "@/config/tenant";
 
 const DOOR_ICONS = ["shop", "sell", "service", "parts", "visit"] as const;
@@ -102,8 +102,8 @@ export default function Home() {
         <Windmill className="wm2" />
         <Windmill className="wm3" />
         <div className="roadstrip" aria-hidden="true" />
-        <div className="rig drive">
-          <Vehicle kind="sedan" id="ww" paint={["#e9eef7", "#9fb0c8"]} />
+        <div className="rig drive" style={{ aspectRatio: vehicleRatio("sedan") }}>
+          <Vehicle kind="sedan" />
         </div>
         <Copy s={ww} />
       </Stage>
@@ -115,8 +115,8 @@ export default function Home() {
         <div className="pines far" aria-hidden="true" />
         <div className="pines mid" aria-hidden="true" />
         <div className="gravel" aria-hidden="true" />
-        <div className="rig idle beams">
-          <Vehicle kind="pickup" id="wa" paint={["#d98a4a", "#7a3f1b"]} glow="#ffe08a" />
+        <div className="rig idle beams" style={{ aspectRatio: vehicleRatio("pickup") }}>
+          <Vehicle kind="pickup" />
         </div>
         <div className="pines near" aria-hidden="true" />
         <Particles color="#e08a4b" count={38} drift={[0.2, -0.2]} size={2.6} />
@@ -127,9 +127,9 @@ export default function Home() {
       <Stage id="ia" scene="ia" label={ia.brand}>
         <div className="beam" aria-hidden="true" />
         <Particles color="#d9bf7a" count={30} drift={[0.02, -0.08]} size={1.6} />
-        <div className="rig floor">
-          <Vehicle kind="coupe" id="iag" paint={["#2b2f3a", "#0d0f15"]} className="ghost" />
-          <Vehicle kind="coupe" id="iab" paint={["#f3e6c4", "#8a7440"]} glow="#fff7d6" className="revealed" />
+        <div className="rig floor" style={{ aspectRatio: vehicleRatio("coupe") }}>
+          <Vehicle kind="coupe" className="ghost" decorative />
+          <Vehicle kind="coupe" className="revealed" />
         </div>
         <Copy s={ia} />
       </Stage>
@@ -149,8 +149,8 @@ export default function Home() {
             <span>charged</span>
           </div>
         </div>
-        <div className="rig floor ev">
-          <Vehicle kind="ev" id="ra" paint={["#1d2a3f", "#070b14"]} glow="#47e6ff" />
+        <div className="rig floor ev" style={{ aspectRatio: vehicleRatio("ev") }}>
+          <Vehicle kind="ev" />
         </div>
         <Copy s={ra} />
       </Stage>

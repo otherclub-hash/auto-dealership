@@ -195,6 +195,28 @@ Typical dealer-site failures (to be verified against the specific bad app Wes fi
 | No accessibility | Overlays and widgets | Real WCAG compliance |
 | Everyone looks identical | Same vendor templates across dealers | Distinct theming per dealer on a shared engine |
 
+### 3.1 "Before" reference: Chevrolet of Wayzata (mobile, screenshots from Wes, Oct 30 2026)
+
+Four phone screenshots of chevroletofwayzata.com (a major brand in a wealthy suburb). Screenshots are kept out of the repo; this is the written record.
+
+| Where | What the screenshots show | Our "after" |
+|---|---|---|
+| Home hero | Gradient green/blue headline, yellow and red type, black countdown box reading "1 Days 18 Hours 04 Minutes", over a dim photo. The accessibility widget button sits on top of the headline. The countdown looks like a perpetual urgency device (unverified). | One calm, lit hero with a single message and a single action. Real, dated offers with real expiry and fine print only. Accessibility built into the page, not a floating button on the headline. |
+| Overlays | "Get Live Help with a Specialist" bubble covers the inventory card; a cookie icon floats bottom left. Both sit over content on first load. | One contact layer we control, docked to a bottom bar that never covers a card. Cookie notice is a one-time compact sheet. |
+| Inventory | Search box, then a chip row that is cut off at the edge ("Au..."), then a "Filter / Sort 1" button. First card shows a gray dealer-logo placeholder instead of the vehicle. | Instant search, wrapping or swipeable chips with a clear scroll cue, active filters shown as removable tags, real photo or a purpose-built "photos coming" state that still shows specs and price. |
+| Navigation | Hamburger menu, Service & Parts expanded: "GM Accessories" appears twice, plus "Chevrolet Accessories"; Service and Parts lumped together; no prices anywhere. | Task-based menu ("Get a service price", "Book service", "Order parts", "Accessories"), no duplicate links, prices on the first screen of each service. |
+| Oil change page | Two stock photos and generic copy ("Certified Service experts..."), one "Schedule Service" button. No price, no vehicle selector, no phone number or hours on the page (only an unlabeled phone icon in the header). The same promo banner repeats above the content. | Vehicle picker (or VIN/plate), exact price or capped price, "Call the service desk" with number and hours, "Book" in the same view. Promos appear only where relevant. |
+
+Design principles drawn from this:
+1. **Answer the visitor's question on the first screen.** Price, availability, or a next step, never marketing copy first.
+2. **Nothing covers content.** Widgets, chat, cookie and accessibility controls dock to reserved space.
+3. **One voice.** A single type scale and a restrained palette with solid, high-contrast text. No gradient text, no red-on-black, no stacked emphasis colors.
+4. **Honest urgency.** Countdowns only for real deadlines; otherwise state the offer and its terms.
+5. **Every menu item earns its place.** No duplicates; label by what the customer wants to do.
+6. **Real imagery or a designed fallback.** Never a vendor placeholder on a vehicle card.
+7. **Contact is one tap away on every service page,** with the number and hours visible in text.
+8. **Do not repeat global banners on every page.** Promos are contextual and dismissible.
+
 Competitive landscape to study (names as category examples, to be researched): the big dealer-website vendors (Dealer.com/Cox, DealerOn, Dealer Inspire, Fusion Zone, DealerSocket sites), digital retailing tools (Roadster, Carvana-style flows, Gubagoo), and DIY site builders. Our edge: design quality, speed, an all-in-one department coverage, and personal attention to detail from a single accountable builder.
 
 Action for Wes: collect the bad app's name, screenshots, and a list of its three worst moments. We turn those into a "before / after" slide for sales.
@@ -317,7 +339,7 @@ Cinematic and trailer-like: dramatic lit backdrops with depth, restrained rich p
 
 1. **Target first:** independents, franchise stores, or service/parts-only? This changes phase 1 priorities and the pitch.
 2. **Brand story:** shall the demo be a fictional multi-brand group (recommended) or modeled on a real local dealer type (new plus used, one franchise)? Which makes you a better demo?
-3. **The bad app:** we have the story (Chevrolet pickup oil change, section 1.0). Can you share the dealer or site name and a few screenshots for the before/after?
+3. **The bad app:** captured in sections 1.0 and 3.1 (Chevrolet of Wayzata). Do you want screenshots of the desktop version and a timed speed test added to complete the before/after, and are you comfortable showing it by name in sales demos, or should we anonymize it?
 3b. **Service pricing data:** do you want the demo to use realistic oil capacities and prices per engine (we can build a sample table), and will dealers be willing to publish prices and a not-to-exceed policy?
 4. **Your selling style:** do you want recurring SaaS only, or also hands-on services (photography, SEO, marketing)? Affects pricing and capacity.
 5. **Price positioning:** premium (design-led, higher price) or disruptive (cheaper than incumbents)? 

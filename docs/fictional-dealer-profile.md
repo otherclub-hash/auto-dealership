@@ -13,6 +13,7 @@ Everything here is fictional. Figures are planning assumptions for a mid-size su
 - Supporting threads: vendor-stack consolidation, reputation
 - Group name: **Lakeshore Auto Family**
 - Brand names: Westwind, Woods-Aaron Motor Co (WAMCO), Interbachen-Antverp (IA), Radium
+- Visual mood: **per-brand scenes** under one group shell (see section 9)
 - Booking: **no login required**; optional account offered after booking confirms
 - Home page: **adapts to the visitor** (intent doors for new visitors, vehicle and service first for returning owners)
 
@@ -189,3 +190,19 @@ What we build for it: instant auto-reply and text, round-robin routing across st
 - Dashboard metrics use the funnels in sections 3 and 4 as the starting point so the before and after is believable.
 - Pricing conversations use sections 2.1 and 2.2.
 - Everything is tenant config and seed data, never hard-coded, so a real dealer replaces this with a config change.
+
+---
+
+## 9. Per-brand scenes (proposed, for Wes to adjust)
+
+One Lakeshore group shell (warm, family-owned, premium Midwest) holds four brand scenes. Each scene is a theme preset in the tenant config: backdrop, light direction, palette, type pairing, motion intensity. All text stays solid and high contrast.
+
+| Scene | Mood | Backdrop and light | Palette direction |
+|---|---|---|---|
+| Group shell | Warm, trustworthy, three generations | Lakeside dusk, light falling across a showroom floor | Deep navy and charcoal with amber accents |
+| Westwind | Friendly, dependable family | Open prairie sky at golden hour, wide horizon | Sky blue and warm sand on dark |
+| Woods-Aaron (WAMCO) | Rugged, earned history | Treeline and gravel road, low sun through pines | Forest green and copper on dark |
+| Interbachen-Antverp (IA) | Refined, European, quiet | Dark gallery, single spotlight, subtle reflections | Black, ivory, and a muted gold |
+| Radium | Modern, clean, silent | Cool glowing horizon, floating particles | Ink and electric cyan |
+
+Rules: scenes theme, they do not fork. Every scene passes automatic contrast checks, and the same components, flows, and admin serve all four.

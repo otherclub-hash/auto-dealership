@@ -25,8 +25,8 @@ Still to confirm with Wes: the four brand names below (proposed), the five locat
 
 | # | Location | Brand / purpose | Notes |
 |---|---|---|---|
-| 1 | Lakeshore WestWind of Birchwood Bay | Mainstream new and used, full service and parts | Flagship, largest fixed ops |
-| 2 | Lakeshore WoodsAaron of Cedar Point | Trucks and SUVs, new and used, service and parts | Trailering, fleet and work-truck customers |
+| 1 | Lakeshore Westwind of Birchwood Bay | Mainstream new and used, full service and parts | Flagship, largest fixed ops |
+| 2 | Lakeshore Woods-Aaron of Cedar Point | Trucks and SUVs, new and used, service and parts | Trailering, fleet and work-truck customers |
 | 3 | Lakeshore Interbachen-Antverp of Pinecrest | Luxury, new and certified, concierge service | Higher expectations, pickup and delivery |
 | 4 | Lakeshore Radium Studio of Harbor Mills | EV-only brand, low-pressure studio, appointment service | Charging, EV incentives, different service needs |
 | 5 | Lakeshore Pre-Owned and Certified, Route 9 Commons | Multi-brand used, no new cars | Shared used inventory, trade-in intake |
@@ -35,8 +35,8 @@ Still to confirm with Wes: the four brand names below (proposed), the five locat
 
 | Brand | Segment | Models (all fictional) | Why it is in the demo |
 |---|---|---|---|
-| WestWind | Mainstream | Aurelia sedan, Tamarack compact crossover, Boundary 3-row SUV, Voyageur minivan | Volume, family shoppers, incentives |
-| WoodsAaron Motor Co | Truck and SUV | Ridgeback pickup (2.7L turbo I4, 3.6L V6, 5.3L V8, 3.3L diesel), Summit SUV | **Oil-change flagship**: engine sets oil quantity |
+| Westwind | Mainstream | Aurelia sedan, Tamarack compact crossover, Boundary 3-row SUV, Voyageur minivan | Volume, family shoppers, incentives |
+| Woods-Aaron Motor Co (WAMCO) | Truck and SUV | Ridgeback pickup (2.7L turbo I4, 3.6L V6, 5.3L V8, 3.3L diesel), Summit SUV | **Oil-change flagship**: engine sets oil quantity |
 | Interbachen-Antverp (IA) | Luxury | V4 sedan, V6 SUV, V8 coupe | Premium service, CPO, concierge |
 | Radium | Electric only | Radium One crossover, Radium Two sedan | EV incentives, charging accessories, service without oil changes |
 
@@ -97,7 +97,7 @@ What this group lives with:
 - Callers who get a range or "it depends" often do not book (Wes's own experience).
 - Declined brakes, tires, and filters are rarely followed up.
 - Retention falls after the warranty period; owners drift to independent shops.
-- Interbachen-Antverp and Radium owners expect convenience (pickup, text updates); WestWind and WoodsAaron owners expect fair, clear prices.
+- Interbachen-Antverp and Radium owners expect convenience (pickup, text updates); Westwind and Woods-Aaron owners expect fair, clear prices.
 
 What we build for it:
 - Vehicle-based **service price estimator** with firm quotes and a not-to-exceed policy.
@@ -105,7 +105,7 @@ What we build for it:
 - Text-to-approve estimates with photos and video.
 - Reminders by mileage and date, declined-work follow-up, loyalty rewards.
 
-### 3.1 Firm-price example: oil change on the WoodsAaron Ridgeback
+### 3.1 Firm-price example: oil change on the Woods-Aaron Ridgeback
 
 Formula: labor + (quarts x price per quart) + filter + shop and disposal fee.
 
@@ -168,8 +168,8 @@ What we build for it: instant auto-reply and text, round-robin routing across st
 
 ## 7. Day in the life: scenarios to script in the demo
 
-1. **Sunday 9 p.m.:** a shopper searches for a 3-row WestWind Boundary under $55,000. An instant text confirms; Monday 8 a.m. the BDC sees what they viewed.
-2. **Service price:** an WoodsAaron Ridgeback owner picks the V8 and sees $134.50, books Saturday, gets a reminder. The service director sees a filled bay.
+1. **Sunday 9 p.m.:** a shopper searches for a 3-row Westwind Boundary under $55,000. An instant text confirms; Monday 8 a.m. the BDC sees what they viewed.
+2. **Service price:** an Woods-Aaron Ridgeback owner picks the V8 and sees $134.50, books Saturday, gets a reminder. The service director sees a filled bay.
 3. **Declined brakes:** an owner who declined brakes last month gets a text with a price and a booking link.
 4. **Trade-in:** a Tamarack owner enters a plate, answers five condition cards, and books an inspection at the pre-owned lot.
 5. **Luxury concierge:** a Interbachen-Antverp owner books pickup and delivery.

@@ -24,6 +24,25 @@ export type Model = {
   cls: VehicleClass;
   aliases: string[];
   engines: Engine[];
+  /** Front-view photo used in answers. exact=false means a representative photo of the brand's lineup. */
+  photo: PhotoKey;
+  photoExact: boolean;
+};
+
+export type PhotoKey = "sedan" | "pickup" | "coupe" | "ev";
+
+export const REAR: Record<PhotoKey, { src: string; w: number; h: number }> = {
+  sedan: { src: "/vehicles/rear-sedan.png", w: 516, h: 361 },
+  pickup: { src: "/vehicles/rear-pickup.png", w: 477, h: 401 },
+  coupe: { src: "/vehicles/rear-coupe.png", w: 501, h: 346 },
+  ev: { src: "/vehicles/rear-ev.png", w: 508, h: 407 },
+};
+
+export const PHOTOS: Record<PhotoKey, { src: string; w: number; h: number }> = {
+  sedan: { src: "/vehicles/front-sedan.png", w: 510, h: 330 },
+  pickup: { src: "/vehicles/front-pickup.png", w: 470, h: 367 },
+  coupe: { src: "/vehicles/front-coupe.png", w: 491, h: 342 },
+  ev: { src: "/vehicles/front-ev.png", w: 486, h: 385 },
 };
 
 const Y: [number, number] = [2016, 2026];
@@ -32,6 +51,7 @@ export const MODELS: Model[] = [
   {
     id: "aurelia", brand: "Westwind", brandKey: "westwind", name: "Aurelia", cls: "car",
     aliases: ["aurelia", "westwind sedan"],
+    photo: "sedan", photoExact: true,
     engines: [
       { id: "20t", label: "2.0L turbo 4-cyl", oil: "0W-20", quarts: 5.0, years: Y, tags: ["2.0", "turbo", "4 cyl", "four cylinder"] },
       { id: "hyb", label: "1.8L hybrid", oil: "0W-16", quarts: 4.2, years: [2019, 2026], tags: ["1.8", "hybrid"] },
@@ -40,6 +60,7 @@ export const MODELS: Model[] = [
   {
     id: "tamarack", brand: "Westwind", brandKey: "westwind", name: "Tamarack", cls: "suv",
     aliases: ["tamarack"],
+    photo: "sedan", photoExact: false,
     engines: [
       { id: "15t", label: "1.5L turbo 3-cyl", oil: "0W-20", quarts: 4.5, years: [2018, 2026], tags: ["1.5", "3 cyl", "three cylinder"] },
       { id: "20t", label: "2.0L turbo 4-cyl", oil: "0W-20", quarts: 5.5, years: [2018, 2026], tags: ["2.0", "4 cyl", "four cylinder"] },
@@ -48,6 +69,7 @@ export const MODELS: Model[] = [
   {
     id: "boundary", brand: "Westwind", brandKey: "westwind", name: "Boundary", cls: "suv",
     aliases: ["boundary"],
+    photo: "sedan", photoExact: false,
     engines: [
       { id: "v6", label: "3.0L V6", oil: "0W-20", quarts: 6.2, years: [2017, 2026], tags: ["3.0", "v6"] },
       { id: "phev", label: "2.0L plug-in hybrid", oil: "0W-20", quarts: 5.0, years: [2022, 2026], tags: ["2.0", "plug in", "phev", "hybrid"] },
@@ -56,6 +78,7 @@ export const MODELS: Model[] = [
   {
     id: "voyageur", brand: "Westwind", brandKey: "westwind", name: "Voyageur", cls: "suv",
     aliases: ["voyageur", "westwind minivan"],
+    photo: "sedan", photoExact: false,
     engines: [
       { id: "v6", label: "3.6L V6", oil: "0W-20", quarts: 6.0, years: Y, tags: ["3.6", "v6"] },
       { id: "hyb", label: "3.6L hybrid", oil: "0W-20", quarts: 5.5, years: [2021, 2026], tags: ["3.6", "hybrid"] },
@@ -64,6 +87,7 @@ export const MODELS: Model[] = [
   {
     id: "ridgeback", brand: "Woods-Aaron", brandKey: "woodsaaron", name: "Ridgeback", cls: "truck",
     aliases: ["ridgeback", "ridge back"],
+    photo: "pickup", photoExact: true,
     engines: [
       { id: "27t", label: "2.7L turbo 4-cyl", oil: "0W-20", quarts: 6.0, years: Y, tags: ["2.7", "turbo", "4 cyl", "four cylinder"] },
       { id: "36", label: "3.6L V6", oil: "0W-20", quarts: 6.5, years: Y, tags: ["3.6", "v6"] },
@@ -74,34 +98,40 @@ export const MODELS: Model[] = [
   {
     id: "summit", brand: "Woods-Aaron", brandKey: "woodsaaron", name: "Summit", cls: "suv",
     aliases: ["summit"],
+    photo: "pickup", photoExact: false,
     engines: [
       { id: "36", label: "3.6L V6", oil: "0W-20", quarts: 6.5, years: Y, tags: ["3.6", "v6"] },
       { id: "53", label: "5.3L V8", oil: "0W-20", quarts: 8.0, years: [2018, 2026], tags: ["5.3", "v8"] },
     ],
   },
   {
-    id: "ia-sedan", brand: "Interbachen-Antverp", brandKey: "ia", name: "IA V4 sedan", cls: "luxury",
-    aliases: ["ia v4", "ia sedan", "interbachen sedan", "interbachen v4"],
+    id: "ia-sedan", brand: "Interbachen-Antverp", brandKey: "ia", name: "V4 sedan", cls: "luxury",
+    aliases: ["ia v4", "ia sedan", "interbachen sedan", "interbachen v4", "interbachen antverp v4", "interbachen antverp sedan"],
+    photo: "coupe", photoExact: false,
     engines: [{ id: "25t", label: "2.5L turbo 4-cyl", oil: "0W-40", quarts: 6.3, years: Y, tags: ["2.5", "turbo"] }],
   },
   {
-    id: "ia-suv", brand: "Interbachen-Antverp", brandKey: "ia", name: "IA V6 SUV", cls: "luxury",
-    aliases: ["ia v6", "ia suv", "interbachen suv", "interbachen v6"],
+    id: "ia-suv", brand: "Interbachen-Antverp", brandKey: "ia", name: "V6 SUV", cls: "luxury",
+    aliases: ["ia v6", "ia suv", "interbachen suv", "interbachen v6", "interbachen antverp v6", "interbachen antverp suv"],
+    photo: "coupe", photoExact: false,
     engines: [{ id: "30t", label: "3.0L turbo V6", oil: "0W-40", quarts: 7.0, years: Y, tags: ["3.0", "turbo", "v6"] }],
   },
   {
-    id: "ia-coupe", brand: "Interbachen-Antverp", brandKey: "ia", name: "IA V8 coupe", cls: "luxury",
-    aliases: ["ia v8", "ia coupe", "interbachen coupe", "interbachen v8"],
+    id: "ia-coupe", brand: "Interbachen-Antverp", brandKey: "ia", name: "V8 coupe", cls: "luxury",
+    aliases: ["ia v8", "ia coupe", "interbachen coupe", "interbachen v8", "interbachen antverp v8", "interbachen antverp coupe"],
+    photo: "coupe", photoExact: true,
     engines: [{ id: "40t", label: "4.0L twin-turbo V8", oil: "0W-40", quarts: 8.5, years: Y, tags: ["4.0", "twin turbo", "v8"] }],
   },
   {
     id: "radium-one", brand: "Radium", brandKey: "radium", name: "Radium One", cls: "ev",
     aliases: ["radium one"],
+    photo: "ev", photoExact: true,
     engines: [{ id: "ev", label: "Electric", oil: "", quarts: 0, years: [2021, 2026], tags: ["electric", "ev"], electric: true }],
   },
   {
     id: "radium-two", brand: "Radium", brandKey: "radium", name: "Radium Two", cls: "ev",
     aliases: ["radium two"],
+    photo: "ev", photoExact: false,
     engines: [{ id: "ev", label: "Electric", oil: "", quarts: 0, years: [2022, 2026], tags: ["electric", "ev"], electric: true }],
   },
 ];

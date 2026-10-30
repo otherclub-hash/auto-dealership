@@ -2,10 +2,12 @@ import AskBox from "@/components/AskBox";
 import DoorCard from "@/components/DoorCard";
 import Icon from "@/components/Icons";
 import Particles from "@/components/Particles";
+import Photo from "@/components/Photo";
 import SceneNav from "@/components/SceneNav";
 import { Clouds, Mountains, Sailboat, Shimmer, Shoreline, Stars, Windmill } from "@/components/Scenery";
 import Stage from "@/components/Stage";
-import Vehicle, { vehicleRatio } from "@/components/Vehicles";
+import VehicleViews, { vehicleRatio } from "@/components/Vehicles";
+import ViewSwitch from "@/components/ViewSwitch";
 import { tenant, type Scene } from "@/config/tenant";
 
 const DOOR_ICONS = ["shop", "sell", "service", "parts", "visit"] as const;
@@ -39,12 +41,16 @@ function Copy({ s }: { s: Scene }) {
           <li key={p}>{p}</li>
         ))}
       </ul>
-      <a className="btn" href="#locations">
-        <span>{s.cta}</span>
-        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 12 H19 M13 6 L19 12 L13 18" />
-        </svg>
-      </a>
+      <div className="cta-row">
+        <a className="btn withphoto" href="#locations">
+          <Photo k={s.photo} className="btnphoto" />
+          <span>{s.cta}</span>
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M4 12 H19 M13 6 L19 12 L13 18" />
+          </svg>
+        </a>
+        <ViewSwitch kind={s.photo} />
+      </div>
     </div>
   );
 }
@@ -94,11 +100,11 @@ export default function Home() {
       </Stage>
 
       {/* ASK: straight answers from the dealer's own price list. */}
-      <section id="ask" className="ask" aria-label="Ask us about service or parts">
+      <section id="ask" className="ask" aria-label="Ask us about sales, service, or parts">
         <div className="ask-head">
           <p className="eyebrow">Straight answers</p>
-          <h2>Ask about service or parts.</h2>
-          <p className="lede">Your price, from our own price list, in seconds. Then book it, or have a person call you.</p>
+          <h2>Ask about sales, service, or parts.</h2>
+          <p className="lede">You can ask if a certain vehicle is still available, what a service costs, or if we have a part. Then book it, or have a person call you.</p>
         </div>
         <AskBox />
         <p className="ask-note">Answers come from our posted prices. A person confirms every appointment.</p>
@@ -116,7 +122,7 @@ export default function Home() {
         <Windmill className="wm3" />
         <div className="roadstrip" aria-hidden="true" />
         <div className="rig drive" style={{ aspectRatio: vehicleRatio("sedan") }}>
-          <Vehicle kind="sedan" />
+          <VehicleViews kind="sedan" />
         </div>
         <Copy s={ww} />
       </Stage>
@@ -129,7 +135,7 @@ export default function Home() {
         <div className="pines mid" aria-hidden="true" />
         <div className="gravel" aria-hidden="true" />
         <div className="rig idle beams" style={{ aspectRatio: vehicleRatio("pickup") }}>
-          <Vehicle kind="pickup" />
+          <VehicleViews kind="pickup" />
         </div>
         <div className="pines near" aria-hidden="true" />
         <Particles color="#e08a4b" count={38} drift={[0.2, -0.2]} size={2.6} />
@@ -141,8 +147,8 @@ export default function Home() {
         <div className="beam" aria-hidden="true" />
         <Particles color="#d9bf7a" count={30} drift={[0.02, -0.08]} size={1.6} />
         <div className="rig floor" style={{ aspectRatio: vehicleRatio("coupe") }}>
-          <Vehicle kind="coupe" className="ghost" decorative />
-          <Vehicle kind="coupe" className="revealed" />
+          <VehicleViews kind="coupe" className="ghost" decorative />
+          <VehicleViews kind="coupe" className="revealed" />
         </div>
         <Copy s={ia} />
       </Stage>
@@ -163,7 +169,7 @@ export default function Home() {
           </div>
         </div>
         <div className="rig floor ev" style={{ aspectRatio: vehicleRatio("ev") }}>
-          <Vehicle kind="ev" />
+          <VehicleViews kind="ev" />
         </div>
         <Copy s={ra} />
       </Stage>

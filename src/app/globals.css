@@ -77,7 +77,12 @@ a { color: inherit; }
 }
 .rig::before { content: ""; position: absolute; left: 4%; right: 4%; bottom: -2%; height: 8%; border-radius: 50%; background: #000000; filter: blur(10px); opacity: .6; z-index: -1; }
 .rig img { display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
-.idle img { animation: bob 2.4s ease-in-out infinite; }
+.views3 { position: absolute; inset: 0; display: block; }
+.rig .views3 img { position: absolute; inset: 0; object-fit: contain; object-position: 50% 100%; opacity: 0; transition: opacity .4s ease, transform .5s cubic-bezier(.2,.8,.2,1); transform: scale(.96); }
+.stage:not([data-view]) .v-side, .stage[data-view="side"] .v-side,
+.stage[data-view="front"] .v-front, .stage[data-view="rear"] .v-rear { opacity: 1; transform: none; }
+.stage[data-view="front"] .rig.drive, .stage[data-view="rear"] .rig.drive { transform: translateX(-50%); }
+.idle .views3 { animation: bob 2.4s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translateY(-3px); } }
 
 /* ---------- Group: lakeside dusk ---------- */
@@ -195,7 +200,7 @@ a { color: inherit; }
 .pct strong { font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 2.8rem); line-height: 1; }
 .pct span { font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .75rem; }
 .scene-radium .rig { bottom: 6svh; }
-.scene-radium .rig img { animation: hum 4s ease-in-out infinite; }
+.scene-radium .rig .views3 { animation: hum 4s ease-in-out infinite; }
 @keyframes hum { 50% { filter: drop-shadow(0 0 16px #47e6ff); } }
 
 /* ---------- Scene rail: a road with a little car ---------- */
@@ -232,7 +237,7 @@ a { color: inherit; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .down, .idle img, .cloud, .blades, .sailboat, .stars circle, .shimmer span, .gridfloor::before, .scene-radium .rig img, .beams::after { animation: none; }
+  .down, .idle .views3, .cloud, .blades, .sailboat, .stars circle, .shimmer span, .gridfloor::before, .scene-radium .rig .views3, .beams::after { animation: none; }
   .btn, .door, .door-icon, .locations li { transition: none; }
 }
 @media (max-width: 640px) {
@@ -300,3 +305,29 @@ a { color: inherit; }
   .qrow .btn { grid-column: 1 / -1; justify-content: center; }
   .ask { padding-top: 72px; padding-right: 44px; }
 }
+
+/* ---------- Front-view photos in buttons, chips and answers ---------- */
+.qhead { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: center; margin-bottom: 12px; }
+.qphoto { width: 100%; height: auto; -webkit-mask-image: linear-gradient(#000 82%, #0000 100%); mask-image: linear-gradient(#000 82%, #0000 100%); }
+.qhead h3 { margin: 0; }
+.foot.tight { margin: 6px 0 0; }
+.chip.withphoto { display: inline-flex; align-items: center; gap: 8px; padding-left: 8px; }
+.chipphoto { width: 44px; height: auto; -webkit-mask-image: linear-gradient(#000 80%, #0000 100%); mask-image: linear-gradient(#000 80%, #0000 100%); }
+.btn.withphoto { padding-left: 14px; }
+.btnphoto { width: 52px; height: auto; -webkit-mask-image: linear-gradient(#000 80%, #0000 100%); mask-image: linear-gradient(#000 80%, #0000 100%); transition: transform .25s ease; }
+.btn.withphoto:hover .btnphoto { transform: scale(1.12) translateY(-2px); }
+@media (max-width: 640px) { .qhead { grid-template-columns: 96px 1fr; } }
+.donehead { display: grid; grid-template-columns: 1fr 150px; gap: 14px; align-items: center; }
+.rearphoto { width: 100%; height: auto; -webkit-mask-image: linear-gradient(#000 82%, #0000 100%); mask-image: linear-gradient(#000 82%, #0000 100%); animation: drive 1.6s ease-out both; }
+@keyframes drive { from { transform: scale(1.5) translateY(10px); } to { transform: none; } }
+@media (max-width: 640px) { .donehead { grid-template-columns: 1fr 96px; } }
+@media (prefers-reduced-motion: reduce) { .rearphoto { animation: none; } }
+
+/* ---------- View switcher ---------- */
+.cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.views { display: flex; gap: 8px; }
+.vbtn { display: grid; justify-items: center; gap: 2px; width: 74px; padding: 6px 4px 4px; border: 2px solid #ffffff; border-radius: 12px; background: #0b1424; color: #ffffff; font: inherit; font-size: .78rem; font-weight: 800; cursor: pointer; transition: transform .15s ease, background .15s ease; }
+.vbtn img { width: 100%; height: 34px; object-fit: contain; }
+.vbtn:hover { transform: translateY(-2px); }
+.vbtn.on { background: var(--accent, #f2b45a); color: #0b1424; border-color: #ffffff; }
+.vbtn:active { transform: scale(.95); }

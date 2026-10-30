@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Photo from "@/components/Photo";
+import type { PhotoKey } from "@/data/catalog";
 import { answer, money, type Answer, type Row } from "@/lib/ask";
 
 const EXAMPLES = [
@@ -34,7 +36,7 @@ export default function AskBox() {
   const [mode, setMode] = useState<Mode>(null);
   const [days, setDays] = useState<{ day: string; times: string[] }[]>([]);
   const [when, setWhen] = useState("");
-  const [done, setDone] = useState<{ id: string; summary: string; name: string; contact: string; vehicle: string } | null>(null);
+  const [done, setDone] = useState<{ id: string; summary: string; name: string; contact: string; vehicle: string; photo?: PhotoKey } | null>(null);
   const [saved, setSaved] = useState<"idle" | "yes" | "no">("idle");
   const [garage, setGarage] = useState<Garage | null>(null);
   const [error, setError] = useState("");
@@ -97,6 +99,7 @@ export default function AskBox() {
           name: body.name,
           contact: body.phone || body.email,
           vehicle: mode.type === "book" ? mode.vehicle : "",
+          photo: mode.type === "book" && res && res.kind === "quote" ? res.photo : undefined,
         });
         setMode(null);
         setSaved("idle");
@@ -153,7 +156,7 @@ export default function AskBox() {
         }}
         role="search"
       >
-        <label htmlFor="ask-q" className="sr">Ask about service, parts, or a vehicle</label>
+        <label htmlFor="ask-q" className="sr">Ask about sales, service, or parts</label>
         <input
           id="ask-q"
           value={q}
@@ -180,7 +183,13 @@ export default function AskBox() {
 
             {res.kind === "quote" && (
               <>
-                <h3>{res.heading}</h3>
+                <div className="qhead">
+                  <Photo k={res.photo} className="qphoto" />
+                  <div>
+                    <h3>{res.heading}</h3>
+                    {!res.photoExact && <p className="foot tight">Representative photo of this brand&apos;s lineup.</p>}
+                  </div>
+                </div>
                 <ul className="rows">
                   {res.rows.map((r) => (
                     <li key={r.key} className="qrow">
@@ -211,7 +220,10 @@ export default function AskBox() {
                 <ul className="chips">
                   {res.chips.map((c) => (
                     <li key={c.ask}>
-                      <button type="button" className="chip" onClick={() => run(c.ask)}>{c.label}</button>
+                      <button type="button" className="chip withphoto" onClick={() => run(c.ask)}>
+                        {c.photo && <Photo k={c.photo} className="chipphoto" />}
+                        <span>{c.label}</span>
+                      </button>
                     </li>
                   ))}
                 </ul>
@@ -268,8 +280,13 @@ export default function AskBox() {
 
             {done && (
               <div className="done" role="status">
-                <h4>Done. Reference {done.id}</h4>
-                <p>{done.summary}</p>
+                <div className="donehead">
+                  <div>
+                    <h4>You are all set. Reference {done.id}</h4>
+                    <p>{done.summary}</p>
+                  </div>
+                  {done.photo && <Photo k={done.photo} rear className="rearphoto" />}
+                </div>
                 <p className="foot">Demo mode: this does not create a real appointment or contact a real dealership.</p>
                 {done.vehicle && saved === "idle" && (
                   <div className="remember">

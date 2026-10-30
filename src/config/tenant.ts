@@ -9,6 +9,7 @@ export type Scene = {
   line: string;
   idea: string;
   perks: string[];
+  photo: "sedan" | "pickup" | "coupe" | "ev";
   cta: string;
 };
 
@@ -40,6 +41,7 @@ export const tenant: Tenant = {
   scenes: [
     {
       id: "westwind",
+      photo: "sedan",
       brand: "Westwind",
       short: "WW",
       segment: "Family vehicles",
@@ -51,6 +53,7 @@ export const tenant: Tenant = {
     },
     {
       id: "woodsaaron",
+      photo: "pickup",
       brand: "Woods-Aaron Motor Co",
       short: "WAMCO",
       segment: "Trucks and SUVs",
@@ -62,6 +65,7 @@ export const tenant: Tenant = {
     },
     {
       id: "ia",
+      photo: "coupe",
       brand: "Interbachen-Antverp",
       short: "IA",
       segment: "Luxury",
@@ -69,10 +73,11 @@ export const tenant: Tenant = {
       line: "Refined sedans, SUVs and coupes with concierge service.",
       idea: "The spotlight",
       perks: ["Pickup and delivery", "Certified pre-owned", "Loaner vehicles"],
-      cta: "Meet IA",
+      cta: "Meet Interbachen-Antverp",
     },
     {
       id: "radium",
+      photo: "ev",
       brand: "Radium",
       short: "RA",
       segment: "Electric",

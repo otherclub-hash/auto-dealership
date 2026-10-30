@@ -1,6 +1,6 @@
 import {
   BRAND_ALIASES, LOCATION_FOR_BRAND, MODELS, OIL, OTHER_MAKES, PARTS, SERVICES,
-  type Engine, type Model, type ServiceId,
+  type Engine, type Model, type PhotoKey, type ServiceId,
 } from "@/data/catalog";
 
 export type Row = {
@@ -12,16 +12,16 @@ export type Row = {
   cap?: number;
 };
 
-export type Chip = { label: string; ask: string };
+export type Chip = { label: string; ask: string; photo?: PhotoKey };
 
 export type Answer =
-  | { kind: "quote"; heading: string; vehicle: string; rows: Row[]; footnote: string; store: string }
+  | { kind: "quote"; heading: string; vehicle: string; rows: Row[]; footnote: string; store: string; photo: PhotoKey; photoExact: boolean }
   | { kind: "ask-vehicle"; message: string; chips: Chip[] }
   | { kind: "ask-service"; message: string; chips: Chip[] }
   | { kind: "handoff"; topic: "other-make" | "sales" | "year" | "unknown"; message: string };
 
 export const displayName = (m: Model) =>
-  m.brandKey === "ia" || m.name.startsWith(m.brand) ? m.name : `${m.brand} ${m.name}`;
+  m.name.startsWith(m.brand) ? m.name : `${m.brand} ${m.name}`;
 
 export const money = (n: number) => `$${n.toFixed(2)}`;
 const round = (n: number) => Math.round(n * 100) / 100;
@@ -57,7 +57,7 @@ function findService(text: string): ServiceId | undefined {
 }
 
 function chipsForModels(models: Model[], service: string, year?: number): Chip[] {
-  return models.map((m) => ({ label: displayName(m), ask: `${service} ${year ?? ""} ${displayName(m)}`.replace(/\s+/g, " ").trim() }));
+  return models.map((m) => ({ label: displayName(m), ask: `${service} ${year ?? ""} ${displayName(m)}`.replace(/\s+/g, " ").trim(), photo: m.photo }));
 }
 
 const SALES = /\b(lease|financ\w*|payments?|trade[- ]?in|used|pre-?owned|certified|cpo|inventory|test drive|msrp|for sale|buy (a|an|my)|new (car|truck|suv|vehicle|ridgeback|aurelia|tamarack|boundary|voyageur|summit))\b/;
@@ -167,7 +167,7 @@ export function answer(raw: string): Answer {
       price: part.price[m.cls],
     }));
     return {
-      kind: "quote", heading: `${part.label} for your ${vehicle}`, vehicle, rows, store,
+      kind: "quote", heading: `${part.label} for your ${vehicle}`, vehicle, rows, store, photo: m.photo, photoExact: m.photoExact,
       footnote: "Fit is checked against your vehicle. Pick up in store or ask us to hold it.",
     };
   }
@@ -178,7 +178,7 @@ export function answer(raw: string): Answer {
       return { key: `${m.id}-${e.id}`, title: e.label, detail: `${e.oil} synthetic · ${e.quarts} quarts · filter and fees included`, price: p.price, cap: p.cap };
     });
     return {
-      kind: "quote", heading: `Oil change for your ${vehicle}`, vehicle, rows, store,
+      kind: "quote", heading: `Oil change for your ${vehicle}`, vehicle, rows, store, photo: m.photo, photoExact: m.photoExact,
       footnote: showAll
         ? "Not sure which engine you have? It is on the door-jamb sticker, or tell us your VIN and we will confirm. Each price is firm, and we text you before anything else is added."
         : `Firm price. If your engine takes up to half a quart more, the most you will pay is ${money(rows[0].cap ?? rows[0].price)}. We text you before anything else is added.`,
@@ -188,7 +188,7 @@ export function answer(raw: string): Answer {
   const s = SERVICES[svc];
   const rows: Row[] = [{ key: `${m.id}-${svc}`, title: s.label, detail: s.note || "Includes labor", price: s.flat[m.cls] }];
   return {
-    kind: "quote", heading: `${s.label} for your ${vehicle}`, vehicle, rows, store,
+    kind: "quote", heading: `${s.label} for your ${vehicle}`, vehicle, rows, store, photo: m.photo, photoExact: m.photoExact,
     footnote: "Firm price for this vehicle. An advisor will text you before any other work is added.",
   };
 }

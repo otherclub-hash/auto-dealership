@@ -57,6 +57,8 @@ Service and parts ("fixed ops") is commonly cited as roughly half of a dealershi
 
 The site is organized by visitor intent (Shop, Sell or Trade, Service, Parts and Accessories, Contact), and adapts to the visitor: new visitors see the intent doors; returning owners (recognized by a saved vehicle or account) see their vehicle, service price, suggested time, and loyalty status first. The dealer's admin is a first-class part of the product, because a hard-to-run site goes stale. Intent mix per real dealer should be confirmed from analytics before we tune the layout.
 
+**Guest-first booking (Wes):** every booking flow (service, test drive, trade-in appointment) works with no login. After the booking is confirmed, the site optionally offers to remember their details with a light account (phone or email code, no password). Declining costs nothing and the booking still stands. The offer is shown once, at the end, with the benefit stated (faster next time, reminders, service history, rewards). Guest bookings are still captured as leads and customer records for the dealer, with consent for follow-up messages recorded.
+
 ---
 
 ## 1. Users and use cases

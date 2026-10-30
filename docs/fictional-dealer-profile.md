@@ -13,6 +13,7 @@ Everything here is fictional. Figures are planning assumptions for a mid-size su
 - Supporting threads: vendor-stack consolidation, reputation
 - Group name: **Lakeshore Auto Family**
 - Brand names: Westwind, Woods-Aaron Motor Co (WAMCO), Interbachen-Antverp (IA), Radium
+- Booking: **no login required**; optional account offered after booking confirms
 - Home page: **adapts to the visitor** (intent doors for new visitors, vehicle and service first for returning owners)
 
 Still to confirm with Wes: the four brand names below (proposed), the five locations, and the group's story.

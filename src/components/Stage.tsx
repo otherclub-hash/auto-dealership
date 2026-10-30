@@ -36,8 +36,8 @@ export default function Stage({
       const t = el.querySelector<HTMLElement>(".revealed");
       if (t) {
         const tr = t.getBoundingClientRect();
-        el.style.setProperty("--rx", String(((e.clientX - tr.left) / tr.width) * 100));
-        el.style.setProperty("--ry", String(((e.clientY - tr.top) / tr.height) * 100));
+        el.style.setProperty("--rx", String(Math.min(100, Math.max(0, ((e.clientX - tr.left) / tr.width) * 100))));
+        el.style.setProperty("--ry", String(Math.min(100, Math.max(0, ((e.clientY - tr.top) / tr.height) * 100))));
       }
     };
 
@@ -50,9 +50,21 @@ export default function Stage({
         const r = el.getBoundingClientRect();
         const vh = window.innerHeight;
         const p = 1 - (r.bottom - 0) / (vh + r.height);
-        el.style.setProperty("--p", String(Math.min(1, Math.max(0, p))));
+        const clamped = Math.min(1, Math.max(0, p));
+        el.style.setProperty("--p", String(clamped));
+        const pct = el.querySelector<HTMLElement>("[data-pct]");
+        if (pct) pct.textContent = `${Math.round(clamped * 100)}%`;
       });
     };
+
+    // Scroll-reveal: the stage's copy slides in the first time it is on screen.
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const en of entries) if (en.isIntersecting) el.classList.add("in");
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
 
     el.addEventListener("pointermove", onMove);
     if (!reduce) {
@@ -62,6 +74,7 @@ export default function Stage({
     return () => {
       el.removeEventListener("pointermove", onMove);
       window.removeEventListener("scroll", onScroll);
+      io.disconnect();
     };
   }, []);
 

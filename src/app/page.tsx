@@ -1,6 +1,22 @@
+import DoorCard from "@/components/DoorCard";
+import Icon from "@/components/Icons";
 import Particles from "@/components/Particles";
+import SceneNav from "@/components/SceneNav";
+import { Clouds, Mountains, Sailboat, Shimmer, Shoreline, Stars, Windmill } from "@/components/Scenery";
 import Stage from "@/components/Stage";
+import Vehicle from "@/components/Vehicles";
 import { tenant, type Scene } from "@/config/tenant";
+
+const DOOR_ICONS = ["shop", "sell", "service", "parts", "visit"] as const;
+
+const NAV = [
+  { id: "home", label: "Lakeshore" },
+  { id: "westwind", label: "Westwind" },
+  { id: "woodsaaron", label: "Woods-Aaron" },
+  { id: "ia", label: "Interbachen-Antverp" },
+  { id: "radium", label: "Radium" },
+  { id: "locations", label: "Visit us" },
+];
 
 function scene(id: Scene["id"]) {
   const s = tenant.scenes.find((x) => x.id === id);
@@ -16,24 +32,18 @@ function Copy({ s }: { s: Scene }) {
       </p>
       <h2>{s.headline}</h2>
       <p className="lede">{s.line}</p>
+      <ul className="perks">
+        {s.perks.map((p) => (
+          <li key={p}>{p}</li>
+        ))}
+      </ul>
       <a className="btn" href="#locations">
-        {s.cta}
+        <span>{s.cta}</span>
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M4 12 H19 M13 6 L19 12 L13 18" />
+        </svg>
       </a>
     </div>
-  );
-}
-
-function Car({ className }: { className?: string }) {
-  // Placeholder silhouette until real vehicle photography is licensed.
-  return (
-    <svg className={className} viewBox="0 0 600 180" role="img" aria-label="Vehicle silhouette">
-      <path
-        d="M20 130 C20 112 40 104 70 100 L150 86 C190 52 240 38 300 38 C360 38 410 52 450 86 L520 98 C560 104 580 114 580 130 L580 146 L20 146 Z"
-        fill="currentColor"
-      />
-      <circle cx="132" cy="146" r="30" fill="currentColor" />
-      <circle cx="468" cy="146" r="30" fill="currentColor" />
-    </svg>
   );
 }
 
@@ -45,10 +55,18 @@ export default function Home() {
 
   return (
     <>
+      <SceneNav items={NAV} />
+
       {/* GROUP: lakeside dusk. The one idea: a straight answer, then five doors. */}
-      <Stage scene="group" label={tenant.group}>
+      <Stage id="home" scene="group" label={tenant.group}>
         <div className="sky" aria-hidden="true" />
-        <div className="lake" aria-hidden="true" />
+        <Stars />
+        <div className="moon" aria-hidden="true" />
+        <Shoreline />
+        <div className="lake" aria-hidden="true">
+          <Shimmer />
+        </div>
+        <Sailboat />
         <Particles color="#f2b45a" count={46} drift={[0.05, -0.18]} size={2.4} />
         <div className="hero-copy">
           <p className="eyebrow">Family owned. Three generations.</p>
@@ -56,63 +74,84 @@ export default function Home() {
           <p className="lede">{tenant.tagline}</p>
           <p className="prompt">What do you need today?</p>
           <ul className="doors">
-            {tenant.intents.map((d) => (
+            {tenant.intents.map((d, i) => (
               <li key={d.label}>
-                <a href={d.href} className="door">
+                <DoorCard href={d.href}>
+                  <Icon name={DOOR_ICONS[i]} className="door-icon" />
                   <strong>{d.label}</strong>
                   <span>{d.hint}</span>
-                </a>
+                </DoorCard>
               </li>
             ))}
           </ul>
         </div>
-        <a className="down" href="#brands">
+        <a className="down" href="#westwind">
           <span className="sr">Scroll to our brands</span>
           <span aria-hidden="true">↓</span>
         </a>
       </Stage>
 
-      <div id="brands" />
-
-      {/* WESTWIND: the horizon. One idea: the sun rises as you scroll. */}
-      <Stage scene="westwind" label={ww.brand}>
+      {/* WESTWIND: the horizon. One idea: the sun rises and the car drives as you scroll. */}
+      <Stage id="westwind" scene="westwind" label={ww.brand}>
         <div className="sunwrap" aria-hidden="true">
           <div className="sun" />
         </div>
+        <Clouds />
         <div className="ground" aria-hidden="true" />
-        <svg className="road" viewBox="0 0 400 200" preserveAspectRatio="none" aria-hidden="true">
-          <polygon points="170,0 230,0 400,200 0,200" fill="#0a1626" />
-          <polygon points="198,0 202,0 214,200 186,200" fill="#f7d58a" />
-        </svg>
+        <Windmill className="wm1" />
+        <Windmill className="wm2" />
+        <Windmill className="wm3" />
+        <div className="roadstrip" aria-hidden="true" />
+        <div className="rig drive">
+          <Vehicle kind="sedan" id="ww" paint={["#e9eef7", "#9fb0c8"]} />
+        </div>
         <Copy s={ww} />
       </Stage>
 
-      {/* WOODS-AARON: the long road. One idea: pines drift past, copper dust rises. */}
-      <Stage scene="woodsaaron" label={wa.brand}>
+      {/* WOODS-AARON: the long road. One idea: headlights cut through the pines. */}
+      <Stage id="woodsaaron" scene="woodsaaron" label={wa.brand}>
         <div className="glow" aria-hidden="true" />
+        <Mountains />
         <div className="pines far" aria-hidden="true" />
         <div className="pines mid" aria-hidden="true" />
+        <div className="gravel" aria-hidden="true" />
+        <div className="rig idle beams">
+          <Vehicle kind="pickup" id="wa" paint={["#d98a4a", "#7a3f1b"]} glow="#ffe08a" />
+        </div>
         <div className="pines near" aria-hidden="true" />
         <Particles color="#e08a4b" count={38} drift={[0.2, -0.2]} size={2.6} />
         <Copy s={wa} />
       </Stage>
 
       {/* IA: the spotlight. One idea: your pointer is the light that reveals the car. */}
-      <Stage scene="ia" label={ia.brand}>
+      <Stage id="ia" scene="ia" label={ia.brand}>
         <div className="beam" aria-hidden="true" />
-        <Car className="ghost" />
-        <Car className="revealed" />
+        <Particles color="#d9bf7a" count={30} drift={[0.02, -0.08]} size={1.6} />
+        <div className="rig floor">
+          <Vehicle kind="coupe" id="iag" paint={["#2b2f3a", "#0d0f15"]} className="ghost" />
+          <Vehicle kind="coupe" id="iab" paint={["#f3e6c4", "#8a7440"]} glow="#fff7d6" className="revealed" />
+        </div>
         <Copy s={ia} />
       </Stage>
 
-      {/* RADIUM: the charge. One idea: a ring fills as you scroll. */}
-      <Stage scene="radium" label={ra.brand}>
+      {/* RADIUM: the charge. One idea: a ring fills as you scroll while the car waits on a grid. */}
+      <Stage id="radium" scene="radium" label={ra.brand}>
         <div className="horizon" aria-hidden="true" />
+        <div className="gridfloor" aria-hidden="true" />
         <Particles color="#47e6ff" count={52} drift={[0, -0.4]} size={2} />
-        <svg className="ring" viewBox="0 0 120 120" aria-hidden="true">
-          <circle cx="60" cy="60" r="52" className="track" />
-          <circle cx="60" cy="60" r="52" className="fill" pathLength="1" />
-        </svg>
+        <div className="ringwrap">
+          <svg className="ring" viewBox="0 0 120 120" aria-hidden="true">
+            <circle cx="60" cy="60" r="52" className="track" />
+            <circle cx="60" cy="60" r="52" className="fill" pathLength="1" />
+          </svg>
+          <div className="pct" aria-hidden="true">
+            <strong data-pct>50%</strong>
+            <span>charged</span>
+          </div>
+        </div>
+        <div className="rig floor ev">
+          <Vehicle kind="ev" id="ra" paint={["#1d2a3f", "#070b14"]} glow="#47e6ff" />
+        </div>
         <Copy s={ra} />
       </Stage>
 
@@ -121,6 +160,7 @@ export default function Home() {
         <ul>
           {tenant.locations.map((l) => (
             <li key={l.name}>
+              <Icon name="visit" className="loc-icon" />
               <strong>{l.name}</strong>
               <span>{l.town}</span>
               <span>{l.role}</span>

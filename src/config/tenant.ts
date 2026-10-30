@@ -8,6 +8,7 @@ export type Scene = {
   headline: string;
   line: string;
   idea: string;
+  perks: string[];
   cta: string;
 };
 
@@ -45,6 +46,7 @@ export const tenant: Tenant = {
       headline: "Wide open, all the way home.",
       line: "Dependable cars, crossovers and minivans for every season of your life.",
       idea: "The horizon",
+      perks: ["Service prices posted", "Open Saturdays", "Book in 60 seconds"],
       cta: "Explore Westwind",
     },
     {
@@ -55,6 +57,7 @@ export const tenant: Tenant = {
       headline: "Built by people who stay.",
       line: "Work trucks and trail SUVs with a long history behind every one.",
       idea: "The long road",
+      perks: ["Firm oil-change quotes", "Fleet and work trucks", "Trailer-ready service"],
       cta: "Explore WAMCO",
     },
     {
@@ -65,6 +68,7 @@ export const tenant: Tenant = {
       headline: "Quiet. Considered. Yours.",
       line: "Refined sedans, SUVs and coupes with concierge service.",
       idea: "The spotlight",
+      perks: ["Pickup and delivery", "Certified pre-owned", "Loaner vehicles"],
       cta: "Meet IA",
     },
     {
@@ -75,6 +79,7 @@ export const tenant: Tenant = {
       headline: "Charged for what's next.",
       line: "Electric crossovers and sedans, with help on incentives and charging.",
       idea: "The charge",
+      perks: ["Incentive help", "Home charger installs", "Test drive at home"],
       cta: "Meet Radium",
     },
   ],

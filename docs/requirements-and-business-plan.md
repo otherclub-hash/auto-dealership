@@ -53,6 +53,10 @@ Service and parts ("fixed ops") is commonly cited as roughly half of a dealershi
 - **Discovery before building:** interview 5 to 10 dealers (GM, used manager, service director, BDC lead) and ask which two metrics they would pay most to improve. Their answers set the order of phase 1.
 - **Consumer use cases still matter** and are unchanged below, but read each one as "what outcome does this produce for the dealer?"
 
+### 0.4 Site experience decision: adapt to the visitor (Wes)
+
+The site is organized by visitor intent (Shop, Sell or Trade, Service, Parts and Accessories, Contact), and adapts to the visitor: new visitors see the intent doors; returning owners (recognized by a saved vehicle or account) see their vehicle, service price, suggested time, and loyalty status first. The dealer's admin is a first-class part of the product, because a hard-to-run site goes stale. Intent mix per real dealer should be confirmed from analytics before we tune the layout.
+
 ---
 
 ## 1. Users and use cases

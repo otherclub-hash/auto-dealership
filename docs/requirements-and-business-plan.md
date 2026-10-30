@@ -6,9 +6,58 @@ The goal: a live, hosted demo (Vercel) that is also the real product template. A
 
 ---
 
+## 0. Framing: the dealer is the customer, the shopper is the means
+
+Two different people matter, and they are not equal:
+- **The dealer pays us.** Our primary user and buyer is the dealership: owner, GM, and department managers. Every feature must be justified by how it makes their business more profitable or more efficient, in terms they already track.
+- **The shopper, seller, and service customer are how the dealer gets paid.** A great consumer experience matters because it produces dealer outcomes: more leads, more appointments, more cars acquired, more service repair orders, higher retention.
+
+Rule for the whole plan: **a feature earns a place by naming the dealer metric it moves.** The consumer use cases in section 1 are the mechanism; this section is the reason.
+
+### 0.1 How a dealership makes money (assumptions to validate with real dealers)
+
+| Profit center | What drives it | Where the website can help |
+|---|---|---|
+| New vehicle sales | Lead volume, response speed, appointment show rate, close rate, incentives clarity | Fast search, e-price capture, instant lead response, test-drive booking, clear specials |
+| Used vehicle sales | Inventory turn, days supply, price competitiveness, photo quality | Merchandising quality, aging alerts, price-change tools, strong vehicle pages |
+| Vehicle acquisition (trade-ins and "sell us your car") | Cost to acquire used inventory; buying from consumers is generally cheaper than auction | Instant appraisal, firm offer, inspection booking |
+| Finance and insurance (F&I) | Number of finance deals, products per deal | Pre-qualification, early credit app, payment calculator, protection products shown in the deal builder |
+| Service (fixed operations) | Repair orders (ROs) per day, average RO value, customer retention, declined work recapture | Online booking, price transparency, reminders, text-to-approve, declined-work follow-up |
+| Parts and accessories | Counter and wholesale sales, accessories attached to new sales | E-commerce with fitment, wholesale portal, accessories bundled into deals |
+| Collision | Estimate volume and DRP relationships | Photo estimate request, booking |
+
+Service and parts ("fixed ops") is commonly cited as roughly half of a dealership's gross profit despite a much smaller share of revenue, and it is steadier than car sales. This is why the oil-change story matters: **a shopper who cannot get a price does not book, and the dealer loses a repair order and a retention relationship.** (Verify the exact figures with a dealer or NADA data before using them in a pitch.)
+
+### 0.2 Dealer pain points and the metric each feature moves
+
+| Dealer problem | Feature that addresses it | Metric the dealer already tracks |
+|---|---|---|
+| Leads lost to slow response | Instant auto-reply and text, routing, SLA alerts | Response time, lead-to-appointment rate |
+| Appointments that do not show | Confirmations, reminders, calendar add, easy reschedule | Show rate |
+| Paying vendors for traffic that does not convert | Faster, clearer site, fewer form fields, attribution reporting | Cost per lead, cost per sale |
+| Used inventory sitting too long | Aging alerts, price-change history, featured/special flags, one-click merchandising | Days supply, turn, aged units |
+| Buying used cars at auction | Trade-in and sell-us-your-car funnel | Cost per acquired unit, trades acquired |
+| Service bays not full, or advisors tied up on the phone answering price questions | Service price estimator, online booking, capacity rules | ROs per day, average RO, phone call volume |
+| Customers who leave after the warranty | Reminders, loyalty, service history, text offers | Service retention, CSI |
+| Declined services never revisited | Declined-work follow-up campaigns | Recapture revenue |
+| Weak online reputation | Review requests after sales and service, response tooling | Review count and rating, CSI |
+| Staff juggling five vendor dashboards | One lead inbox, one admin | Staff time, vendor stack cost |
+| Compliance and privacy risk | Disclosures, consent logs, privacy handling | Risk, not revenue |
+| Hard to prove the site pays for itself | Attribution dashboard: leads, appointments, ROs and sales traced to the site | ROI, retention of our contract |
+
+### 0.3 What this changes in the plan
+
+- **Prioritization (section 2):** rank features by *dealer dollar impact* first, then by how convincingly the demo can show it. Lead capture and response, service booking and pricing, trade-in acquisition, and the admin dashboard rise to the top. Purely decorative features fall.
+- **The demo must show the dealer's view, not only the shopper's.** Half of the sales demo is the manager dashboard: leads waiting, response time, appointments, service bookings, aged inventory, and revenue attributed to the site.
+- **Pricing (section 4):** price against dealer ROI, not against our hours. Illustration only: if the site adds two used-car sales per month at roughly $2,000 to $3,000 gross each, plus a few extra service ROs, it can attribute several thousand dollars of monthly gross profit to a $900 to $1,800 monthly fee. The attribution dashboard is what makes that case, and keeps the contract renewed.
+- **Discovery before building:** interview 5 to 10 dealers (GM, used manager, service director, BDC lead) and ask which two metrics they would pay most to improve. Their answers set the order of phase 1.
+- **Consumer use cases still matter** and are unchanged below, but read each one as "what outcome does this produce for the dealer?"
+
+---
+
 ## 1. Users and use cases
 
-We design from the point of view of every person who touches a dealership. Each use case is tagged with the department it serves.
+We design from the point of view of every person who touches a dealership. Each use case is tagged with the department it serves. Dealer staff are the primary users (see 1.2); shoppers and customers are the means by which the dealer earns.
 
 ### 1.0 Flagship use case (from Wes's real experience): "What does an oil change cost for my truck?"
 
@@ -127,7 +176,7 @@ Non-software lesson for the sales pitch: the dealer's phone staff lost trust by 
 
 ## 2. Prioritization and build order
 
-MoSCoW per release. The flagship demo needs to prove three things in the first five seconds and the first two minutes: it looks far better than anything the dealer has, it is fast, and it is a complete system, not a brochure.
+Ordering rule (from section 0): **dealer dollar impact first, demo proof second, build effort third.** MoSCoW per release. The flagship demo needs to prove three things in the first five seconds and the first two minutes: it looks far better than anything the dealer has, it is fast, and it is a complete system, not a brochure.
 
 ### Phase 0: Foundation (build before any feature)
 - Multi-tenant, config-driven template (section 5): brand tokens, content, departments toggle on/off.
@@ -337,6 +386,7 @@ Cinematic and trailer-like: dramatic lit backdrops with depth, restrained rich p
 
 ## 7. Open questions for Wes
 
+0. **Dealer priorities:** which two or three metrics would a dealer pay most to improve (lead response, service ROs, used turn, trade acquisition, reputation)? Can you line up a few dealer conversations, even informal, to confirm before we lock phase 1?
 1. **Target first:** independents, franchise stores, or service/parts-only? This changes phase 1 priorities and the pitch.
 2. **Brand story:** shall the demo be a fictional multi-brand group (recommended) or modeled on a real local dealer type (new plus used, one franchise)? Which makes you a better demo?
 3. **The bad app:** captured in sections 1.0 and 3.1 (Chevrolet of Wayzata). Do you want screenshots of the desktop version and a timed speed test added to complete the before/after, and are you comfortable showing it by name in sales demos, or should we anonymize it?

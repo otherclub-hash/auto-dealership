@@ -10,6 +10,20 @@ The goal: a live, hosted demo (Vercel) that is also the real product template. A
 
 We design from the point of view of every person who touches a dealership. Each use case is tagged with the department it serves.
 
+### 1.0 Flagship use case (from Wes's real experience): "What does an oil change cost for my truck?"
+
+A customer visited a major Chevrolet dealer's site to learn the price of an oil change for a Chevy pickup. The site listed no prices and was confusing. Finding the service phone number took a while. When Wes called, the service department would not give a firm price: it "depends on how many quarts it takes," with a range up to $189. The customer wanted to give the truck details and get a number.
+
+What this tells us to build:
+- **Service price estimator by vehicle.** Year / make / model / engine, or VIN or plate lookup, then a price for the chosen service. The engine determines oil capacity and oil spec (for example, a V8 pickup versus a 4-cylinder), so a firm quote is usually knowable from the vehicle.
+- **Quarts-based pricing built into the menu.** Each service op stores base labor, oil grade, capacity by engine, price per quart, filter, and fees. The estimator computes the total. The dealer sets the rules in the admin.
+- **A firm quote or a clear policy.** Show "Your price: $X" when capacity is known. If the dealer wants protection, show "Price $X, not to exceed $Y" with a plain-language explanation, and let the customer approve any change by text before work starts. Never an unexplained range.
+- **Transparent menu pricing** for the top 15 to 20 services (oil change, tire rotation, brakes, battery, alignment, inspection), with a disclosure line about what can change the price.
+- **Prominent click-to-call, text, and book** on every service page, with the department number and hours visible without hunting. Two taps from the home page to the price.
+- **Success measure:** a visitor who lands on the site can get a price for their vehicle's oil change in under 30 seconds and book in under 90.
+
+Non-software lesson for the sales pitch: the dealer's phone staff lost trust by saying "it depends" with no estimate. Our tool gives advisors the same exact-price calculator on the phone, so they can quote confidently and consistently. Pitch line: "Your customers are shopping your service prices before they ever call. Whoever shows a number first wins the appointment." Train dealers on quoting practice (a firm estimate plus a not-to-exceed cap) as part of onboarding.
+
 ### 1.1 External users
 
 **Shopper / buyer (new and used sales)**
@@ -128,7 +142,7 @@ Must have:
 3. Payment calculator and "get my price" lead capture.
 4. Test-drive scheduler.
 5. Trade-in appraisal flow (plate/VIN plus condition cards, one card at a time).
-6. Service scheduler with menu, advisor, time slots, recall check (mocked data acceptable).
+6. Service scheduler with menu, advisor, time slots, recall check (mocked data acceptable), plus the **vehicle-based service price estimator** from section 1.0 (this is a headline demo moment).
 7. Specials and incentives page.
 8. Parts and accessories storefront (browse, fitment select, cart, request-to-order or pickup).
 9. Dealer-side admin: lead inbox, inventory manager, specials editor, appointment calendar, theme/branding editor (this is what sells).
@@ -177,6 +191,7 @@ Typical dealer-site failures (to be verified against the specific bad app Wes fi
 | Dead links, stale inventory | Feed lag | Frequent sync, sold-state handling, "just sold" redirect to similar |
 | Slow lead response | Leads land in an email inbox | Instant auto-reply, routing, SLA alerts |
 | Broken service booking | Third-party scheduler iframe | Native scheduler with the dealer's capacity rules |
+| No service prices, hidden phone number, "it depends" quotes (Wes's Chevrolet experience) | Dealers avoid publishing prices; site buries service contact info | Vehicle-based price estimator, published menu pricing, not-to-exceed policy, click-to-call on every service page |
 | No accessibility | Overlays and widgets | Real WCAG compliance |
 | Everyone looks identical | Same vendor templates across dealers | Distinct theming per dealer on a shared engine |
 
@@ -302,7 +317,8 @@ Cinematic and trailer-like: dramatic lit backdrops with depth, restrained rich p
 
 1. **Target first:** independents, franchise stores, or service/parts-only? This changes phase 1 priorities and the pitch.
 2. **Brand story:** shall the demo be a fictional multi-brand group (recommended) or modeled on a real local dealer type (new plus used, one franchise)? Which makes you a better demo?
-3. **The bad app:** which dealer/vendor was it, and what exactly failed? Screenshots help us build the before/after.
+3. **The bad app:** we have the story (Chevrolet pickup oil change, section 1.0). Can you share the dealer or site name and a few screenshots for the before/after?
+3b. **Service pricing data:** do you want the demo to use realistic oil capacities and prices per engine (we can build a sample table), and will dealers be willing to publish prices and a not-to-exceed policy?
 4. **Your selling style:** do you want recurring SaaS only, or also hands-on services (photography, SEO, marketing)? Affects pricing and capacity.
 5. **Price positioning:** premium (design-led, higher price) or disruptive (cheaper than incumbents)? 
 6. **Integrations promised at launch:** which DMS/CRM do the dealers in your area use? Any you must support to win the first deal?

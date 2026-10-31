@@ -31,7 +31,7 @@ function slots() {
   return out;
 }
 
-export default function AskBox() {
+export default function AskBox({ examples = EXAMPLES, placeholder = "Try: oil change for a 2019 Ridgeback" }: { examples?: string[]; placeholder?: string }) {
   const [q, setQ] = useState("");
   const [res, setRes] = useState<Answer | null>(null);
   const [asked, setAsked] = useState("");
@@ -163,7 +163,7 @@ export default function AskBox() {
           id="ask-q"
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Try: oil change for a 2019 Ridgeback"
+          placeholder={placeholder}
           autoComplete="off"
           enterKeyHint="search"
         />
@@ -171,7 +171,7 @@ export default function AskBox() {
       </form>
 
       <ul className="chips" aria-label="Examples">
-        {EXAMPLES.map((ex) => (
+        {examples.map((ex) => (
           <li key={ex}>
             <button type="button" className="chip" onClick={() => run(ex)}>{ex}</button>
           </li>

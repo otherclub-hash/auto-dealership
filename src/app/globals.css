@@ -366,3 +366,42 @@ a { color: inherit; }
   .hero-left .door { min-height: 60px; }
   .hero-ask .result { max-height: none; }
 }
+
+/* ---------- Brand sites ---------- */
+.brandsite { --amber: var(--accent, #f2b45a); background: #0b1424; }
+.brand-westwind { --accent: #ffd27a; }
+.brand-woodsaaron { --accent: #e08a4b; }
+.brand-ia { --accent: #d9bf7a; }
+.brand-radium { --accent: #47e6ff; }
+.bbar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 10px 16px; background: #0b1424; border-bottom: 2px solid var(--accent); }
+.bback { font-weight: 700; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.bname { font-family: var(--serif); font-size: 1.3rem; margin-right: auto; color: var(--accent); }
+.bbar nav { display: flex; gap: 6px; flex-wrap: wrap; }
+.bbar nav a { min-height: 44px; display: inline-flex; align-items: center; padding: 0 12px; font-weight: 700; text-decoration: none; border-radius: 999px; }
+.bbar nav a:hover { background: #14233f; }
+.brandsite .stage { min-height: calc(100svh - 66px); }
+.bsec { max-width: 1100px; margin: 0 auto; padding: 72px 16px 24px; }
+.bsec h2 { font-family: var(--serif); font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; margin: 0 0 12px; }
+.bsec .eyebrow { color: var(--accent); }
+.blede { max-width: 62ch; font-size: 1.1rem; margin: 0 0 22px; }
+.mgrid, .ogrid, .hours { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.mgrid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.mcard, .ocard { background: #14233f; border: 2px solid var(--accent); border-radius: 16px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.mphoto { width: 100%; height: 150px; object-fit: contain; }
+.mcard h3 { font-family: var(--serif); font-size: 1.5rem; margin: 4px 0 0; }
+.mtype { margin: 0; font-weight: 700; color: var(--accent); }
+.mengines { margin: 0 0 8px; font-size: .95rem; }
+.ogrid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.ocard strong { font-size: 1.2rem; }
+.hours li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.bask .askbar, .bask .chips, .bask .result { max-width: 860px; }
+.bsec a:not(.btn) { color: var(--accent); }
+@media (max-width: 640px) { .bbar { gap: 8px; } .bname { order: -1; width: 100%; } }
+@media (max-width: 640px) {
+  .bbar { position: static; padding: 6px 12px; gap: 4px 10px; }
+  .bname { order: 0; width: auto; font-size: 1.15rem; }
+  .bback { font-size: .92rem; }
+  .bbar nav { width: 100%; flex-wrap: nowrap; overflow-x: auto; }
+  .bbar nav a { white-space: nowrap; padding: 0 10px; }
+  .brandsite .stage { min-height: calc(100svh - 100px); }
+}

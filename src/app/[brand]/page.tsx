@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import AskBox from "@/components/AskBox";
 import BrandHero from "@/components/BrandHero";
@@ -35,9 +34,6 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
   return (
     <div className={`brandsite brand-${id}`}>
       <header className="bbar">
-        <Link href="/" className="bback">
-          <span aria-hidden="true">←</span> {tenant.group}
-        </Link>
         <strong className="bname">{s.brand}</strong>
         <nav aria-label={`${s.brand} sections`}>
           <a href="#models">Models</a>
@@ -97,9 +93,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
             </li>
           ))}
         </ul>
-        <p className="blede">
-          Part of {tenant.group}. <Link href="/#locations">See all five locations</Link>.
-        </p>
+        <p className="blede">A {tenant.group} dealership.</p>
       </section>
     </div>
   );

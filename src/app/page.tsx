@@ -14,7 +14,6 @@ const DOOR_ICONS = ["shop", "sell", "service", "parts", "visit"] as const;
 
 const NAV = [
   { id: "home", label: "Lakeshore" },
-  { id: "ask", label: "Ask us" },
   { id: "westwind", label: "Westwind" },
   { id: "woodsaaron", label: "Woods-Aaron" },
   { id: "ia", label: "Interbachen-Antverp" },
@@ -69,39 +68,40 @@ export default function Home() {
       <Stage id="home" scene="group" label={tenant.group}>
         <Backdrop k="group" />
         <Particles color="#f2b45a" count={46} drift={[0.05, -0.18]} size={2.4} />
-        <div className="hero-copy">
-          <p className="eyebrow">Family owned. Three generations.</p>
-          <h1>{tenant.group}</h1>
-          <p className="lede">{tenant.tagline}</p>
-          <p className="prompt">What do you need today?</p>
-          <ul className="doors">
-            {tenant.intents.map((d, i) => (
-              <li key={d.label}>
-                <DoorCard href={d.href}>
-                  <Icon name={DOOR_ICONS[i]} className="door-icon" />
-                  <strong>{d.label}</strong>
-                  <span>{d.hint}</span>
-                </DoorCard>
-              </li>
-            ))}
-          </ul>
+        <div className="hero-copy hero-split">
+          <div className="hero-head">
+            <p className="eyebrow">Family owned. Three generations.</p>
+            <h1>{tenant.group}</h1>
+            <p className="lede">{tenant.tagline}</p>
+          </div>
+          <div className="hero-left">
+            <p className="prompt">What do you need today?</p>
+            <ul className="doors">
+              {tenant.intents.map((d, i) => (
+                <li key={d.label}>
+                  <DoorCard href={d.href}>
+                    <Icon name={DOOR_ICONS[i]} className="door-icon" />
+                    <span className="dtext">
+                      <strong>{d.label}</strong>
+                      <span>{d.hint}</span>
+                    </span>
+                  </DoorCard>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <section id="ask" className="hero-ask" aria-label="Ask us about sales, service, or parts">
+            <h2>Ask about sales, service, or parts.</h2>
+            <p className="ask-lede">You can ask if a certain vehicle is still available, what a service costs, or if we have a part.</p>
+            <AskBox />
+            <p className="ask-note">Answers come from our posted prices. A person confirms every appointment.</p>
+          </section>
         </div>
-        <a className="down" href="#ask">
+        <a className="down" href="#westwind">
           <span className="sr">Scroll to our brands</span>
           <span aria-hidden="true">↓</span>
         </a>
       </Stage>
-
-      {/* ASK: straight answers from the dealer's own price list. */}
-      <section id="ask" className="ask" aria-label="Ask us about sales, service, or parts">
-        <div className="ask-head">
-          <p className="eyebrow">Straight answers</p>
-          <h2>Ask about sales, service, or parts.</h2>
-          <p className="lede">You can ask if a certain vehicle is still available, what a service costs, or if we have a part. Then book it, or have a person call you.</p>
-        </div>
-        <AskBox />
-        <p className="ask-note">Answers come from our posted prices. A person confirms every appointment.</p>
-      </section>
 
       {/* WESTWIND: the horizon. One idea: the sun rises and the car drives as you scroll. */}
       <Stage id="westwind" scene="westwind" label={ww.brand}>

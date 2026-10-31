@@ -341,3 +341,28 @@ a { color: inherit; }
 .credit { position: absolute; left: 12px; bottom: 10px; z-index: 6; margin: 0; padding: 4px 10px; border-radius: 999px; background: #0b1424; color: #ffffff; font-size: .72rem; font-weight: 600; }
 .credit a { color: #ffd27a; text-decoration: underline; }
 .scene-woodsaaron .pines.near { display: none; }
+
+/* ---------- Group landing: doors on the left, Ask on the right, no scrolling needed ---------- */
+.hero-split { max-width: 1240px; display: grid; grid-template-columns: minmax(280px, 400px) 1fr; column-gap: 40px; align-items: start; }
+.hero-split .hero-head { grid-column: 1 / -1; }
+.hero-split h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); margin-bottom: 10px; }
+.hero-split .lede { max-width: 52ch; margin-bottom: 8px; }
+.hero-left .prompt { margin: 4px 0 10px; font-size: 1.3rem; }
+.hero-left .doors { grid-template-columns: 1fr; gap: 10px; }
+.hero-left .door { display: grid; grid-template-columns: 44px 1fr; align-items: center; column-gap: 14px; min-height: 64px; padding: 8px 16px; }
+.hero-left .door-icon { margin: 0; width: 38px; height: 38px; }
+.hero-left .dtext { display: grid; }
+.hero-ask { background: #0b1424; border: 2px solid var(--amber); border-radius: 18px; padding: 18px 20px; }
+.hero-ask h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin: 0 0 6px; text-shadow: none; }
+.hero-ask .ask-lede { margin: 0; font-size: 1rem; }
+.hero-ask .askbar { margin-top: 14px; }
+.hero-ask .askbar input { min-height: 54px; font-size: 1.05rem; }
+.hero-ask .chips { margin-top: 10px; }
+.hero-ask .result { max-height: 42svh; overflow-y: auto; margin-top: 14px; }
+.hero-ask .ask-note { margin: 10px 0 0; font-size: .88rem; }
+.scene-group { padding-bottom: 10svh; }
+@media (max-width: 860px) {
+  .hero-split { grid-template-columns: 1fr; row-gap: 14px; }
+  .hero-left .door { min-height: 60px; }
+  .hero-ask .result { max-height: none; }
+}

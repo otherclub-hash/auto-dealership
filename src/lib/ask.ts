@@ -2,6 +2,7 @@ import {
   BRAND_ALIASES, LOCATION_FOR_BRAND, MODELS, OIL, OTHER_MAKES, PARTS, SERVICES,
   type Engine, type Model, type PhotoKey, type ServiceId,
 } from "@/data/catalog";
+import { SLUG } from "@/config/brands";
 
 export type Row = {
   key: string;
@@ -18,7 +19,7 @@ export type Answer =
   | { kind: "quote"; heading: string; vehicle: string; rows: Row[]; footnote: string; store: string; photo: PhotoKey; photoExact: boolean }
   | { kind: "ask-vehicle"; message: string; chips: Chip[] }
   | { kind: "ask-service"; message: string; chips: Chip[] }
-  | { kind: "handoff"; topic: "other-make" | "sales" | "year" | "unknown"; message: string };
+  | { kind: "handoff"; topic: "other-make" | "other-brand" | "sales" | "year" | "unknown"; message: string; href?: string; hrefLabel?: string };
 
 export const displayName = (m: Model) =>
   m.name.startsWith(m.brand) ? m.name : `${m.brand} ${m.name}`;
@@ -62,7 +63,8 @@ function chipsForModels(models: Model[], service: string, year?: number): Chip[]
 
 const SALES = /\b(lease|financ\w*|payments?|trade[- ]?in|used|pre-?owned|certified|cpo|inventory|test drive|msrp|for sale|available|still have|do you have|looking for|shopping|under \$?\d+|(new|used) (car|sedan|crossover|minivan|van|ev|electric|coupe|truck|suv|vehicle|ridgeback|aurelia|tamarack|boundary|voyageur|summit))\b/;
 
-export function answer(raw: string): Answer {
+/** `scope` keeps a brand site to its own brand: questions about another brand point to that brand's site. */
+export function answer(raw: string, scope?: Model["brandKey"]): Answer {
   const text = ` ${raw.toLowerCase().replace(/[^a-z0-9.\- ]/g, " ").replace(/\s+/g, " ").trim()} `.trim();
   const year = Number(text.match(/\b(19[89]\d|20[0-3]\d)\b/)?.[1]) || undefined;
   const service = findService(text);
@@ -71,6 +73,17 @@ export function answer(raw: string): Answer {
   const brand = findBrand(text);
   if (!models.length && brand) models = MODELS.filter((m) => m.brandKey === brand);
   const exact = models.length === 1 ? models[0] : undefined;
+
+  if (scope && models.length && models.every((m) => m.brandKey !== scope)) {
+    const other = models[0];
+    return {
+      kind: "handoff",
+      topic: "other-brand",
+      message: `That one is a ${other.brand} question. ${other.brand} has its own site with its own team, prices and inventory.`,
+      href: `/${SLUG[other.brandKey]}`,
+      hrefLabel: `Go to ${other.brand}`,
+    };
+  }
 
   // Sales questions go to a person, with context attached.
   if (SALES.test(text) && !service) {

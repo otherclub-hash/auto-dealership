@@ -416,3 +416,8 @@ a { color: inherit; }
 @media (max-width: 640px) { .bbar { top: auto; } }
 .brandsite .stage { padding-top: calc(11svh + 70px); }
 @media (max-width: 640px) { .brandsite .stage { padding-top: 9svh; } }
+.heroask { margin-top: 16px; max-width: 760px; }
+.heroask .askbar { margin-top: 0; }
+.heroask .askbar input { min-height: 54px; font-size: 1.05rem; }
+.heroask .chips { margin-top: 10px; }
+.bsec { scroll-margin-top: 110px; }

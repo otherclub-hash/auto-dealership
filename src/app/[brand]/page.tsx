@@ -66,7 +66,7 @@ export default async function BrandPage({ params }: { params: Promise<{ brand: s
         <p className="eyebrow">Straight answers</p>
         <h2>Ask about sales, service, or parts.</h2>
         <p className="blede">{site.askHint} Looking for a new or used {s.brand} car? Tell us what you want.</p>
-        <AskBox examples={site.asks} placeholder={`Try: ${site.asks[0].toLowerCase()}`} />
+        <AskBox brand={id} examples={site.asks} placeholder={`Try: ${site.asks[0].toLowerCase()}`} />
       </section>
 
       <section id="offers" className="bsec" aria-label="Service and offers">

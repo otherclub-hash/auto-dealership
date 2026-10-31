@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Photo from "@/components/Photo";
-import type { PhotoKey } from "@/data/catalog";
+import type { Model, PhotoKey } from "@/data/catalog";
 import { answer, money, type Answer, type Row } from "@/lib/ask";
 
 const EXAMPLES = [
@@ -31,7 +31,7 @@ function slots() {
   return out;
 }
 
-export default function AskBox({ examples = EXAMPLES, placeholder = "Try: oil change for a 2019 Ridgeback" }: { examples?: string[]; placeholder?: string }) {
+export default function AskBox({ examples = EXAMPLES, placeholder = "Try: oil change for a 2019 Ridgeback", brand }: { examples?: string[]; placeholder?: string; brand?: Model["brandKey"] }) {
   const [q, setQ] = useState("");
   const [res, setRes] = useState<Answer | null>(null);
   const [asked, setAsked] = useState("");
@@ -60,12 +60,19 @@ export default function AskBox({ examples = EXAMPLES, placeholder = "Try: oil ch
     if (!t) return;
     setQ(t);
     setAsked(t);
-    setRes(answer(t));
+    setRes(answer(t, brand));
     setMode(null);
     setDone(null);
     setError("");
     requestAnimationFrame(() => panel.current?.scrollIntoView({ behavior: "smooth", block: "nearest" }));
   };
+
+  // The hero Ask bar on a brand site sends its question here.
+  useEffect(() => {
+    const onAsk = (e: Event) => run(String((e as CustomEvent<string>).detail ?? ""));
+    window.addEventListener("lakeshore-ask", onAsk);
+    return () => window.removeEventListener("lakeshore-ask", onAsk);
+  });
 
   const vehicleOf = useMemo(() => (res && res.kind === "quote" ? res.vehicle : ""), [res]);
 
@@ -232,7 +239,14 @@ export default function AskBox({ examples = EXAMPLES, placeholder = "Try: oil ch
               </>
             )}
 
-            {res.kind === "handoff" && (
+            {res.kind === "handoff" && res.href && (
+              <>
+                <p className="msg">{res.message}</p>
+                <a className="btn" href={res.href}>{res.hrefLabel}</a>
+              </>
+            )}
+
+            {res.kind === "handoff" && !res.href && (
               <>
                 <p className="msg">{res.message}</p>
                 <button type="button" className="btn" onClick={() => { setDone(null); setMode({ type: "callback", topic: res.topic, question: asked }); }}>

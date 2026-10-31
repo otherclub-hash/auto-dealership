@@ -1,10 +1,11 @@
+import HeroAsk from "@/components/HeroAsk";
 import Backdrop from "@/components/Backdrop";
 import Particles from "@/components/Particles";
 import Photo from "@/components/Photo";
 import Stage from "@/components/Stage";
 import VehicleViews, { vehicleRatio } from "@/components/Vehicles";
 import ViewSwitch from "@/components/ViewSwitch";
-import { SLUG, type BrandKey } from "@/config/brands";
+import { BRAND_SITE, SLUG, type BrandKey } from "@/config/brands";
 import { tenant } from "@/config/tenant";
 
 function Copy({ id, onBrandPage }: { id: BrandKey; onBrandPage: boolean }) {
@@ -33,6 +34,7 @@ function Copy({ id, onBrandPage }: { id: BrandKey; onBrandPage: boolean }) {
         </a>
         <ViewSwitch kind={s.photo} />
       </div>
+      {onBrandPage && <HeroAsk placeholder={`Ask about sales, service, or parts`} examples={BRAND_SITE[id].asks} />}
     </div>
   );
 }

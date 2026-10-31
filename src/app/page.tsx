@@ -4,7 +4,7 @@ import Icon from "@/components/Icons";
 import Particles from "@/components/Particles";
 import Photo from "@/components/Photo";
 import SceneNav from "@/components/SceneNav";
-import { Clouds, Mountains, Sailboat, Shimmer, Shoreline, Stars, Windmill } from "@/components/Scenery";
+import Backdrop from "@/components/Backdrop";
 import Stage from "@/components/Stage";
 import VehicleViews, { vehicleRatio } from "@/components/Vehicles";
 import ViewSwitch from "@/components/ViewSwitch";
@@ -67,14 +67,7 @@ export default function Home() {
 
       {/* GROUP: lakeside dusk. The one idea: a straight answer, then five doors. */}
       <Stage id="home" scene="group" label={tenant.group}>
-        <div className="sky" aria-hidden="true" />
-        <Stars />
-        <div className="moon" aria-hidden="true" />
-        <Shoreline />
-        <div className="lake" aria-hidden="true">
-          <Shimmer />
-        </div>
-        <Sailboat />
+        <Backdrop k="group" />
         <Particles color="#f2b45a" count={46} drift={[0.05, -0.18]} size={2.4} />
         <div className="hero-copy">
           <p className="eyebrow">Family owned. Three generations.</p>
@@ -112,14 +105,7 @@ export default function Home() {
 
       {/* WESTWIND: the horizon. One idea: the sun rises and the car drives as you scroll. */}
       <Stage id="westwind" scene="westwind" label={ww.brand}>
-        <div className="sunwrap" aria-hidden="true">
-          <div className="sun" />
-        </div>
-        <Clouds />
-        <div className="ground" aria-hidden="true" />
-        <Windmill className="wm1" />
-        <Windmill className="wm2" />
-        <Windmill className="wm3" />
+        <Backdrop k="westwind" />
         <div className="roadstrip" aria-hidden="true" />
         <div className="rig drive" style={{ aspectRatio: vehicleRatio("sedan") }}>
           <VehicleViews kind="sedan" />
@@ -129,10 +115,7 @@ export default function Home() {
 
       {/* WOODS-AARON: the long road. One idea: headlights cut through the pines. */}
       <Stage id="woodsaaron" scene="woodsaaron" label={wa.brand}>
-        <div className="glow" aria-hidden="true" />
-        <Mountains />
-        <div className="pines far" aria-hidden="true" />
-        <div className="pines mid" aria-hidden="true" />
+        <Backdrop k="woodsaaron" />
         <div className="gravel" aria-hidden="true" />
         <div className="rig idle beams" style={{ aspectRatio: vehicleRatio("pickup") }}>
           <VehicleViews kind="pickup" />

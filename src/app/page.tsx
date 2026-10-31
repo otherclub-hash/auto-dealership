@@ -92,7 +92,7 @@ export default function Home() {
           </div>
           <section id="ask" className="hero-ask" aria-label="Ask us about sales, service, or parts">
             <h2>Ask about sales, service, or parts.</h2>
-            <p className="ask-lede">You can ask if a certain vehicle is still available, what a service costs, or if we have a part.</p>
+            <p className="ask-lede">Looking for a new or used car? Tell us what you want. You can ask if a certain vehicle is still available, what a service costs, or if we have a part.</p>
             <AskBox />
             <p className="ask-note">Answers come from our posted prices. A person confirms every appointment.</p>
           </section>

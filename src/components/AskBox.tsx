@@ -10,6 +10,8 @@ const EXAMPLES = [
   "How much for brakes on my Boundary?",
   "Oil filter for a Tamarack",
   "Tire rotation Aurelia",
+  "Used 3-row SUV under $40,000",
+  "Is a new Ridgeback still available?",
 ];
 
 type Garage = { name: string; contact: string; vehicle: string };

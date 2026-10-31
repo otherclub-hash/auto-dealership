@@ -60,7 +60,7 @@ function chipsForModels(models: Model[], service: string, year?: number): Chip[]
   return models.map((m) => ({ label: displayName(m), ask: `${service} ${year ?? ""} ${displayName(m)}`.replace(/\s+/g, " ").trim(), photo: m.photo }));
 }
 
-const SALES = /\b(lease|financ\w*|payments?|trade[- ]?in|used|pre-?owned|certified|cpo|inventory|test drive|msrp|for sale|buy (a|an|my)|new (car|truck|suv|vehicle|ridgeback|aurelia|tamarack|boundary|voyageur|summit))\b/;
+const SALES = /\b(lease|financ\w*|payments?|trade[- ]?in|used|pre-?owned|certified|cpo|inventory|test drive|msrp|for sale|available|still have|do you have|looking for|shopping|under \$?\d+|(new|used) (car|sedan|crossover|minivan|van|ev|electric|coupe|truck|suv|vehicle|ridgeback|aurelia|tamarack|boundary|voyageur|summit))\b/;
 
 export function answer(raw: string): Answer {
   const text = ` ${raw.toLowerCase().replace(/[^a-z0-9.\- ]/g, " ").replace(/\s+/g, " ").trim()} `.trim();
@@ -77,7 +77,7 @@ export function answer(raw: string): Answer {
     return {
       kind: "handoff",
       topic: "sales",
-      message: "A sales consultant can answer that with current inventory and numbers. Leave a name and number and they will text you the details.",
+      message: "A sales consultant can check current new and used inventory, availability and numbers for you. Leave a name and number and they will text you the details.",
     };
   }
 
